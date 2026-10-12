@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+  command = ""
+[[headers]]
+  for = "/posts/img/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
