@@ -233,6 +233,14 @@ footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;fl
 .sub-ok{font-family:var(--serif);font-style:italic;font-size:1.6rem!important}
 .follow .social{margin-top:6px}
 footer a{color:inherit}
+
+.endsub{margin-top:48px;border:1px solid var(--rule);border-top:6px solid var(--red);padding:24px;display:flex;flex-direction:column;gap:14px;background:var(--card)}
+.endsub h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;line-height:1.1;margin:0}
+.endsub p{margin:0;color:var(--muted);font-size:.98rem}
+.endsub form{display:flex;gap:10px;flex-wrap:wrap}
+.endsub input[type=email]{flex:1 1 220px;min-width:0;font:inherit;padding:12px 14px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:0}
+.endsub .btn{align-self:stretch;justify-content:center}
+.endsub .ok{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -1030,7 +1038,7 @@ footer a{color:inherit}
     <h2 id="fo-h">Get it<br><span>first.</span></h2>
     <p>New stories in your inbox once or twice a week, plus the Edition 01 launch date and the first look at the cover.</p>
     <form class="sub" name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?subscribed=1">
-      <input type="hidden" name="form-name" value="subscribe">
+      <input type="hidden" name="form-name" value="subscribe"><input type="hidden" name="source" value="footer">
       <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <label class="sr" for="sub-email">Email address</label>
       <input id="sub-email" type="email" name="email" required placeholder="you@email.com" autocomplete="email">
@@ -1120,6 +1128,24 @@ footer a{color:inherit}
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
       .then(function(r){if(!r.ok)throw 0;done()})
       .catch(function(){b.disabled=false;b.textContent='Try again';});
+  });
+})();
+
+(function(){
+  var arts=document.querySelectorAll('article.article');
+  arts.forEach(function(a,i){
+    var d=document.createElement('aside');d.className='endsub';d.setAttribute('aria-label','Subscribe by email');
+    d.innerHTML='<span class="label red">Free by email</span><h3>Liked this? Get the next one in your inbox.</h3><p>New stories once or twice a week. No spam, unsubscribe anytime.</p>'+
+      '<form><label class="sr" for="es-'+i+'">Email address</label><input id="es-'+i+'" type="email" name="email" required placeholder="you@email.com" autocomplete="email"><button class="btn" type="submit">Subscribe →</button></form><p class="ok" role="status" hidden>Thanks. You’re on the list.</p>';
+    a.appendChild(d);
+    var f=d.querySelector('form'),ok=d.querySelector('.ok');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();var b=f.querySelector('button');b.disabled=true;b.textContent='Sending…';
+      var body=new URLSearchParams({'form-name':'subscribe','email':f.email.value,'source':a.getAttribute('data-page')||''});
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
+        .then(function(r){if(!r.ok)throw 0;f.hidden=true;ok.hidden=false})
+        .catch(function(){b.disabled=false;b.textContent='Try again'});
+    });
   });
 })();
 </script>
