@@ -222,6 +222,16 @@ section{padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--rule)}
 .follow .row{display:flex;gap:12px;flex-wrap:wrap}
 .follow .btn.ghost{color:var(--paper);box-shadow:inset 0 0 0 1px var(--paper)}
 footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.sub{display:flex;gap:10px;flex-wrap:wrap;max-width:560px}
+.sub input[type=email]{flex:1 1 240px;min-width:0;font:inherit;font-size:1.05rem;padding:13px 16px;background:transparent;color:var(--paper);border:1px solid var(--paper);border-radius:0}
+.sub input[type=email]::placeholder{color:var(--paper);opacity:.55}
+.sub .btn{flex:0 0 auto;align-self:stretch;justify-content:center}
+.sub-note{font-size:.95rem!important;opacity:.75}
+.sub-note a{color:inherit}
+.sub-ok{font-family:var(--serif);font-style:italic;font-size:1.6rem!important}
+.follow .social{margin-top:6px}
+footer a{color:inherit}
 </style>
 </head>
 <body>
@@ -236,7 +246,7 @@ footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;fl
       <a href="#original" data-nav="original">The Original</a>
       <a href="#archive" data-nav="archive">Archive</a>
       <a href="#about" data-nav="about">About</a>
-      <a class="cta" href="#follow">Follow</a>
+      <a class="cta" href="#follow">Subscribe</a>
     </nav>
   </div>
 </header>
@@ -731,6 +741,22 @@ footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;fl
   </section>
 </div>
 
+<div class="page article" data-page="privacy" hidden>
+  <a class="back" href="#home">← Home</a>
+  <h1>Privacy</h1>
+  <p class="dek">What we collect, why, and how to get it removed. Plain English.</p>
+  <div class="byline"><span class="label">Updated 12 October 2026</span></div>
+  <h2>If you subscribe</h2>
+  <p>We keep your email address so we can send you new stories and news about The Dosage, usually once or twice a week. That’s all we use it for. We never sell or share it with advertisers. Every email has an unsubscribe link, and you can also email <b>info@thedosagemag.com</b> to be removed and have your address deleted.</p>
+  <p>Sign-ups are stored by our website host, Netlify. If we move to a dedicated email service to send the newsletter, your address will be stored there too, and we’ll update this page.</p>
+  <h2>If you email us</h2>
+  <p>We keep your message and contact details so we can reply, follow up a story or fix a correction. We don’t add you to the mailing list unless you ask.</p>
+  <h2>When you visit the site</h2>
+  <p>We don’t use advertising or tracking cookies. Our host keeps standard server logs, such as IP addresses, to run and protect the site. Fonts load from Google Fonts. Videos come from YouTube and only load when you press play; YouTube may then set its own cookies.</p>
+  <h2>Who we are</h2>
+  <p>The Dosage is a publication by Extract and Design, working between Colombo and Melbourne. Questions about your data: <b>info@thedosagemag.com</b>.</p>
+</div>
+
 <!-- ARTICLES -->
 <article class="page article" data-page="post-melbourne" hidden>
   <a class="back" href="#stories">← Stories</a>
@@ -948,11 +974,20 @@ footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;fl
 
 <section class="follow" id="follow" aria-labelledby="fo-h">
   <div class="wrap">
-    <span class="label red">Edition 01 · Coming soon</span>
-    <h2 id="fo-h">Be first<br><span>to hold it.</span></h2>
-    <p>Follow The Dosage for the launch date, behind-the-story films and the first look at the cover.</p>
-    <div class="row">
-      <a class="btn" href="https://www.instagram.com/thedosagemag/" target="_blank" rel="noopener">Instagram ↗</a>
+    <span class="label red">The Dosage · By email</span>
+    <h2 id="fo-h">Get it<br><span>first.</span></h2>
+    <p>New stories in your inbox once or twice a week, plus the Edition 01 launch date and the first look at the cover.</p>
+    <form class="sub" name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?subscribed=1">
+      <input type="hidden" name="form-name" value="subscribe">
+      <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="sr" for="sub-email">Email address</label>
+      <input id="sub-email" type="email" name="email" required placeholder="you@email.com" autocomplete="email">
+      <button class="btn" type="submit">Subscribe →</button>
+    </form>
+    <p class="sub-ok" role="status" hidden>Thanks. You’re on the list.</p>
+    <p class="sub-note">No spam. Unsubscribe anytime. <a href="#privacy">How we use your email</a>.</p>
+    <div class="row social">
+      <a class="btn ghost" href="https://www.instagram.com/thedosagemag/" target="_blank" rel="noopener">Instagram ↗</a>
       <a class="btn ghost" href="https://www.facebook.com/775658699176936" target="_blank" rel="noopener">Facebook ↗</a>
       <a class="btn ghost" href="https://www.youtube.com/channel/UCFuubEibYwv4tLMy_a9Yasw" target="_blank" rel="noopener">YouTube ↗</a>
     </div>
@@ -961,7 +996,7 @@ footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;fl
 
 <footer class="wrap">
   <span class="label">The Dosage · A publication by Extract and Design</span>
-  <span class="label">Reality, unfiltered.</span>
+  <span class="label">Reality, unfiltered. · <a href="#privacy">Privacy</a> · <a href="#follow">Subscribe</a></span>
 </footer>
 
 <script>
@@ -1018,6 +1053,20 @@ footer{padding-block:28px;display:flex;justify-content:space-between;gap:16px;fl
   });
   window.addEventListener('hashchange',route);
   route();
+})();
+
+(function(){
+  var f=document.querySelector('form.sub');if(!f)return;
+  var ok=document.querySelector('.sub-ok');
+  function done(){f.hidden=true;ok.hidden=false}
+  if(/[?&]subscribed=1/.test(location.search))done();
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var b=f.querySelector('button');b.disabled=true;b.textContent='Sending…';
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+      .then(function(r){if(!r.ok)throw 0;done()})
+      .catch(function(){b.disabled=false;b.textContent='Try again';});
+  });
 })();
 </script>
 </body>
