@@ -235,6 +235,13 @@ footer a{color:inherit}
 .endsub input[type=email]{flex:1 1 220px;min-width:0;font:inherit;padding:12px 14px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:0}
 .endsub .btn{align-self:stretch;justify-content:center}
 .endsub .ok{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--ink)}
+
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:22px 0}
+.share .label{margin-right:4px}
+.share a,.share button{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:transparent;border:1px solid var(--rule);padding:8px 11px;cursor:pointer;line-height:1}
+.share a:hover,.share button:hover{border-color:var(--ink)}
+.share .native{background:var(--red);color:var(--on-red);border-color:var(--red)}
+.share.end{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule)}
 </style>
 
 <header class="bar">
@@ -1138,6 +1145,34 @@ footer a{color:inherit}
         .then(function(r){if(!r.ok)throw 0;f.hidden=true;ok.hidden=false})
         .catch(function(){b.disabled=false;b.textContent='Try again'});
     });
+  });
+})();
+
+(function(){
+  var base='https://thedosagemag.com/';
+  function bar(a,isEnd){
+    var id=a.getAttribute('data-page'),h=a.querySelector('h1'),title=h?h.textContent.trim():'The Dosage';
+    var url=base+'#'+id,u=encodeURIComponent(url),t=encodeURIComponent(title+' | The Dosage');
+    var d=document.createElement('div');d.className='share'+(isEnd?' end':'');d.setAttribute('aria-label','Share this story');
+    var html='<span class="label">'+(isEnd?'Share this story':'Share')+'</span>';
+    if(navigator.share)html+='<button type="button" class="native">Share ↗</button>';
+    html+='<a target="_blank" rel="noopener" href="https://wa.me/?text='+t+'%20'+u+'">WhatsApp</a>'+
+      '<a target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u='+u+'">Facebook</a>'+
+      '<a target="_blank" rel="noopener" href="https://www.threads.net/intent/post?text='+t+'%20'+u+'">Threads</a>'+
+      '<a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+t+'&url='+u+'">X</a>'+
+      '<a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url='+u+'">LinkedIn</a>'+
+      '<button type="button" class="copy">Copy link</button>';
+    d.innerHTML=html;
+    var n=d.querySelector('.native');if(n)n.addEventListener('click',function(){navigator.share({title:title,url:url}).catch(function(){})});
+    var c=d.querySelector('.copy');c.addEventListener('click',function(){
+      var done=function(){c.textContent='Copied ✓';setTimeout(function(){c.textContent='Copy link'},2000)};
+      if(navigator.clipboard)navigator.clipboard.writeText(url).then(done,function(){prompt('Copy this link:',url)});else prompt('Copy this link:',url);
+    });
+    return d;
+  }
+  document.querySelectorAll('article.article').forEach(function(a){
+    var by=a.querySelector('.byline');if(by)by.insertAdjacentElement('afterend',bar(a,false));
+    var es=a.querySelector('.endsub');a.insertBefore(bar(a,true),es||null);
   });
 })();
 </script>
