@@ -318,6 +318,13 @@ footer a{color:inherit}
 .numstrip span{font-size:1rem;line-height:1.4}
 .numstrip em{font-style:normal;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto}
 .numstrip a:hover span{text-decoration:underline;text-underline-offset:3px}
+
+.wgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,48px);align-items:end}
+@media (max-width:820px){.wgrid{grid-template-columns:minmax(0,1fr)}}
+.wtxt{display:flex;flex-direction:column;gap:14px;min-width:0}
+.wtxt h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1;margin:0;text-wrap:balance}
+.wtxt p{margin:0;max-width:46ch}
+.wtxt a.label{color:var(--ink)}
 </style>
 
 <header class="bar">
@@ -358,6 +365,19 @@ footer a{color:inherit}
 
   <section aria-label="More stories" style="padding-top:0;border-top:0">
     <div class="grid" data-list="home"></div>
+  </section>
+
+  <section aria-labelledby="watch-h">
+    <div class="head"><h2 id="watch-h">Watch</h2><a class="label" href="https://www.youtube.com/channel/UCFuubEibYwv4tLMy_a9Yasw" target="_blank" rel="noopener">All films on YouTube ↗</a></div>
+    <div class="wgrid">
+      <button type="button" class="yt big" data-yt="ydU_OrJA0aY" aria-label="Play video: The Dosage: Trailer #1"><img src="https://i.ytimg.com/vi/ydU_OrJA0aY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ydU_OrJA0aY/hqdefault.jpg'" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span><span class="yt-t">The Dosage: Trailer #1</span></button>
+      <div class="wtxt">
+        <span class="label red">From the archive · The original issue</span>
+        <h3>Where it all started</h3>
+        <p>The trailer for the very first issue of The Dosage: the cyclists, bodybuilders, therapists, nurses and doctors who filled its pages.</p>
+        <a class="label" href="#original">Read the original issue →</a>
+      </div>
+    </div>
   </section>
 
   <section class="reel" aria-labelledby="reel-home"><div class="reel-head"><div><span class="label red">Films · Dassa Vlogs</span><h2 id="reel-home">Editor’s Travels</h2></div><p>While The Dosage was on hold, our editor kept filming. Two stories from 2020, now with full write-ups.</p></div>
