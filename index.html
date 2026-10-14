@@ -287,6 +287,30 @@ footer a{color:inherit}
 .feature .credits-box{background:var(--card);padding:20px 22px;margin-top:40px}
 .feature .credits-box h2{margin-top:0}
 .fbody .archive{margin:22px 0 6px;padding:14px 18px;border-left:4px solid #d62828;background:#f4f1ea;font-size:15px;line-height:1.55}.fbody .archive b{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:#d62828;display:block;margin-bottom:4px}
+
+/* Editor's Travels: a screening-room band, always dark */
+.reel{--reel-bg:#151412;--reel-ink:#EEE9DF;--reel-muted:#A39E94;--reel-rule:#36332E;--reel-hi:#FF6B61;background:var(--reel-bg);color:var(--reel-ink);margin-inline:calc(-1*clamp(16px,4vw,48px));padding-block:clamp(28px,5vw,56px);padding-left:max(clamp(16px,4vw,48px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4vw,48px),env(safe-area-inset-right,0px));margin-block:12px 44px}
+.reel .label{color:var(--reel-muted)}.reel .label.red{color:var(--reel-hi)}
+.reel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 32px;flex-wrap:wrap;border-bottom:1px solid var(--reel-rule);padding-bottom:16px;margin-bottom:24px}
+.reel-head h1,.reel-head h2{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,7vw,4.6rem);line-height:.88;letter-spacing:-.025em;text-transform:uppercase;margin:8px 0 0;color:var(--reel-ink);text-wrap:balance}
+.reel-head p{max-width:46ch;color:var(--reel-muted);margin:0;font-size:1rem;line-height:1.55}
+.reel-head a{color:var(--reel-ink)}
+.films-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(22px,3vw,36px)}
+.ftile{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--reel-ink);min-width:0}
+.ftile .shot{position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#1C1A17}
+.ftile .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.ftile:hover .shot img,.ftile:focus-visible .shot img{transform:scale(1.04)}
+.ftile .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,0) 58%)}
+.ftile .ep{position:absolute;left:16px;bottom:10px;z-index:1;font-family:var(--display);font-weight:900;font-size:clamp(3.2rem,8vw,5.2rem);line-height:.82;letter-spacing:-.03em;color:transparent;-webkit-text-stroke:2px #fff}
+.ftile .ep small{display:block;-webkit-text-stroke:0;color:#fff;font-family:var(--mono);font-weight:500;font-size:.68rem;letter-spacing:.22em;margin-bottom:8px}
+.ftile .play{position:absolute;right:16px;bottom:16px;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--red);display:grid;place-items:center}
+.ftile .play::before{content:"";border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.ftile .fmeta{display:flex;flex-wrap:wrap;gap:4px 14px}
+.ftile h3{font-family:var(--display);font-weight:800;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.1;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.ftile p{margin:0;color:var(--reel-muted);font-size:1rem;line-height:1.5}
+.ftile:focus-visible{outline:2px solid var(--reel-hi);outline-offset:6px}
+.reel-more{display:inline-block;margin-top:28px;font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--reel-ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:4px}
+@media (prefers-reduced-motion:reduce){.ftile .shot img{transition:none}}
 </style>
 </head>
 <body>
@@ -334,7 +358,10 @@ footer a{color:inherit}
 
 <!-- STORIES -->
 <div class="page" data-page="stories" hidden>
-  <div class="pagehead"><span class="label red">The Dosage</span><h1>Stories</h1><p>News, explainers and dispatches from the making of Edition 01. Every number is sourced. Plus <a href="#travels">Editor’s Travels</a>, the films our editor made while The Dosage was on hold.</p></div>
+  <div class="pagehead"><span class="label red">The Dosage</span><h1>Stories</h1><p>News, explainers and dispatches from the making of Edition 01. Every number is sourced.</p></div>
+  <section class="reel" aria-labelledby="reel-st"><div class="reel-head"><div><span class="label red">Films · Dassa Vlogs</span><h2 id="reel-st">Editor’s Travels</h2></div><p>While The Dosage was on hold, our editor kept filming. Two stories from 2020, now with full write-ups.</p></div>
+  <div class="films-grid" data-list="travels"></div>
+  <a class="reel-more" href="#travels">All Editor’s Travels →</a></section>
   <section><div class="grid" data-list="all"></div></section>
 </div>
 
@@ -814,8 +841,8 @@ footer a{color:inherit}
 </div>
 
 <div class="page" data-page="travels" hidden>
-  <div class="pagehead"><span class="label red">Editor’s Travels</span><h1>While we were away</h1><p>The Dosage went quiet after its first issue, but our editor, Eashaan Dassanayaka, kept filming. These are the stories he made on his own channel, Dassa Vlogs, in the spirit of The Dosage, with whoever was around to hold a camera.</p></div>
-  <section><div class="grid" data-list="travels"></div></section>
+  <section class="reel" aria-labelledby="reel-tr" style="margin-top:0"><div class="reel-head"><div><span class="label red">Editor’s Travels · Dassa Vlogs</span><h1 id="reel-tr">While we were away</h1></div><p>The Dosage went quiet after its first issue, but our editor, Eashaan Dassanayaka, kept filming. These are the stories he made on his own channel, Dassa Vlogs, in the spirit of The Dosage, with whoever was around to hold a camera.</p></div>
+  <div class="films-grid" data-list="travels"></div></section>
 </div>
 
 <article class="page article feature" data-page="post-lovebar" hidden>
@@ -1218,8 +1245,8 @@ footer a{color:inherit}
     {id:'post-cinnamon',cat:'Food',date:'12 Oct 2026',title:'The cinnamon in your kitchen probably isn’t ours',dek:'Most cinnamon sold worldwide is cassia. Ceylon cinnamon is a different spice, with a hundred times less coumarin.'},
     {id:'post-default',cat:'Explained',date:'12 Oct 2026',title:'What happens when a country can’t pay?',dek:'The dollar jar, the default, and why the fuel queues began.'},
     {id:'post-back',cat:'News',date:'12 Oct 2026',title:'The Dosage is back',dek:'One story per edition, told in full. Printed to keep, with everything else a scan away.'},
-    {id:'post-jeana',cat:'Editor’s Travels',date:'5 Aug 2020',title:'Breaking the status quo with Jeana De Zoysa',dek:'Dassa Vlogs, episode 13. Climate change, veganism and wildlife, on the banks of Bolgoda.'},
-    {id:'post-lovebar',cat:'Editor’s Travels',date:'9 Jun 2020',title:"The Sri Lankan Bartender behind Colombo's forbidden Love story",dek:'Dassa Vlogs, episode 11. An old school friend, met again by chance almost six years on.'},
+    {id:'post-jeana',cat:'Editor’s Travels',ep:'13',mins:'30 min',img:'posts/img/travels/jeana-bolgoda.jpg',pos:'center 55%',date:'5 Aug 2020',title:'Breaking the status quo with Jeana De Zoysa',dek:'Dassa Vlogs, episode 13. Climate change, veganism and wildlife, on the banks of Bolgoda.'},
+    {id:'post-lovebar',cat:'Editor’s Travels',ep:'11',mins:'13 min',img:'posts/img/travels/lovebar-hero.jpg',pos:'center 12%',date:'9 Jun 2020',title:"The Sri Lankan Bartender behind Colombo's forbidden Love story",dek:'Dassa Vlogs, episode 11. An old school friend, met again by chance almost six years on.'},
     {id:'post-ride',cat:'Archive',date:'From the archive',title:'The First Ride',dek:'Before cycling was a movement in Sri Lanka, The Dosage was there.'}
   ];
   function card(p){
@@ -1231,9 +1258,16 @@ footer a{color:inherit}
     var d=document.createElement('p');d.textContent=p.dek;
     a.append(m,h,d);return a;
   }
+  function ftile(p){
+    var a=document.createElement('a');a.className='ftile';a.href='#'+p.id;
+    a.innerHTML='<div class="shot"><img alt="" loading="lazy"><span class="ep"><small>EPISODE</small>'+p.ep+'</span><span class="play" aria-hidden="true"></span></div><div class="fmeta"><span class="label red">Dassa Vlogs · Ep '+p.ep+'</span><span class="label">'+p.date+' · '+p.mins+'</span></div><h3></h3><p></p>';
+    var im=a.querySelector('img');im.src=p.img;im.style.objectPosition=p.pos;
+    a.querySelector('h3').textContent=p.title;a.querySelector('p').textContent=p.dek.replace(/^Dassa Vlogs, episode \d+\. /,'');
+    return a;
+  }
   document.querySelectorAll('[data-list]').forEach(function(el){
-    var L=el.dataset.list,list=L==='home'?posts.slice(1,4):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts;
-    list.forEach(function(p){el.appendChild(card(p))});
+    var L=el.dataset.list,list=L==='home'?posts.slice(1,4):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
+    list.forEach(function(p){el.appendChild(L==='travels'?ftile(p):card(p))});
   });
   var pages=document.querySelectorAll('[data-page]');
   var navs=document.querySelectorAll('[data-nav]');
