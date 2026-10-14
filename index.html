@@ -258,6 +258,35 @@ footer a{color:inherit}
 .credits{list-style:none;padding:0;margin:0 0 16px;font-size:.98rem}
 .credits li{padding:6px 0;border-bottom:1px solid var(--rule)}
 .credits b{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+
+/* cover-story feature */
+.feature{max-width:none}
+.feature .fhero{position:relative;margin:0 calc(-1*clamp(16px,4vw,48px));min-height:min(86vh,760px);display:flex;align-items:flex-end;background:#111 center/cover no-repeat;color:#fff}
+.feature .fhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.82) 100%)}
+.feature .fhero .in{position:relative;z-index:1;padding:0 clamp(16px,4vw,48px) clamp(28px,5vw,56px);max-width:980px}
+.feature .fhero .kick{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;background:#D7261E;color:#fff;display:inline-block;padding:7px 10px}
+.feature .fhero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,5.6rem);line-height:.98;margin:18px 0 0;color:#fff}
+.feature .fhero .dek{color:rgba(255,255,255,.88);font-size:clamp(1.1rem,2.2vw,1.45rem);max-width:46ch;margin-top:16px}
+.feature .fhero .credit{position:absolute;right:clamp(16px,4vw,48px);bottom:10px;z-index:1;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.6)}
+.feature .fbody{max-width:720px;margin:0 auto}
+.feature .fbody>.byline{margin-top:28px}
+.feature .lede::first-letter{float:left;font-family:var(--display);font-weight:900;font-size:4.6em;line-height:.8;margin:6px 10px 0 0;color:var(--red)}
+.feature .lede{font-size:1.2rem}
+.feature h2{font-family:var(--display);font-weight:900;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;margin-top:44px;color:var(--red-text)}
+.feature .bigquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;margin:44px 0;padding:0;border:0;text-align:center}
+.feature .bigquote::before{content:"“";display:block;font-family:var(--display);font-style:normal;font-size:3.4rem;line-height:.6;color:var(--red)}
+.feature .wide{margin:40px calc(-1*clamp(16px,4vw,48px));}
+@media(min-width:900px){.feature .wide{margin-left:-120px;margin-right:-120px}}
+.feature .film{background:#111;color:#F1EDE4;padding:22px clamp(16px,4vw,28px) 26px}
+.feature .film .label{color:#FF6B61}
+.feature .film h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;margin:6px 0 14px;color:#F1EDE4}
+.feature .gallery{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.feature .gallery img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
+.feature .gallery .tall{grid-row:span 2;aspect-ratio:auto}
+.feature .gallery figcaption{grid-column:1/-1;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);margin-top:4px}
+.feature .credits-box{background:var(--card);padding:20px 22px;margin-top:40px}
+.feature .credits-box h2{margin-top:0}
+.fbody .archive{margin:22px 0 6px;padding:14px 18px;border-left:4px solid #d62828;background:#f4f1ea;font-size:15px;line-height:1.55}.fbody .archive b{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:#d62828;display:block;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -789,22 +818,38 @@ footer a{color:inherit}
   <section><div class="grid" data-list="travels"></div></section>
 </div>
 
-<article class="page article" data-page="post-lovebar" hidden>
-  <a class="back" href="#travels">← Editor’s Travels</a>
-  <h1>The Sri Lankan Bartender behind Colombo's forbidden Love story</h1>
-  <p class="dek">A chance meeting with an old school friend at the door of a Colombo 7 bar turned into a night of six cocktails and a case for drinking local.</p>
+<article class="page article feature" data-page="post-lovebar" hidden>
+  <header class="fhero" style="background-image:url(posts/img/travels/lovebar-hero.jpg);background-position:center 22%">
+    <div class="in">
+      <span class="kick">Editor’s Travels · Dassa Vlogs Ep 11</span>
+      <h1>The Sri Lankan Bartender behind Colombo's forbidden Love story</h1>
+      <p class="dek">A chance meeting with an old school friend at a door in Colombo 7, almost six years after they last saw each other.</p>
+    </div>
+    <span class="credit">Photo: Sebastian Olegard</span>
+  </header>
+  <div class="fbody">
+  <a class="back" href="#travels" style="margin-top:24px;display:inline-block">← Editor’s Travels</a>
+  <h1 class="sr">The Sri Lankan Bartender behind Colombo's forbidden Love story</h1>
   <div class="byline"><span class="label red">Editor’s Travels</span><span class="label">Dassa Vlogs · Episode 11</span><span class="label">Eashaan Dassanayaka</span><span class="label">9 June 2020</span></div>
-  <figure class="pic"><img src="posts/img/travels/lovebar-photo.jpg" alt="Vimuth Joseph and Eashaan Dassanayaka with cocktails at the Love Bar, Colombo" width="1440" height="1152" loading="lazy"><figcaption>Vimuth Joseph and Eashaan at the Love Bar, Flamingo House, Colombo 7. Photo: Sebastian Olegard</figcaption></figure>
-  <p>Eashaan had been back in Sri Lanka since March 2020 when he walked up to the Love Bar at Flamingo House, Colombo 7, and found Vimuth Joseph at the front door. The two went to school together. The last time they had seen each other was almost six years earlier.</p>
-  <p>Vimuth and the bar’s management had just built a new cocktail menu, and Eashaan tasted all six drinks on camera. Most of the ingredients were sourced locally and made in-house, part of a campaign the bar was running to “eat local and drink local” and support Sri Lankan producers.</p>
-  <blockquote>Six cocktails, an old friend, and a case for drinking local.</blockquote>
-  <figure class="pic"><img src="posts/img/travels/lovebar-eashaan.jpg" alt="Eashaan Dassanayaka at the Love Bar" width="720" height="720" loading="lazy"><figcaption>On the night at the Love Bar. Photo: Sebastian Olegard</figcaption></figure>
-  <p>It was Eashaan’s second visit to the bar, and unlike his quicker vlogs, he spent real time on this one, so viewers could see the place properly.</p>
-  <div class="watch"><span class="label red">▶ Watch</span><button type="button" class="yt big" data-yt="li_pTdyu1Z4" aria-label="Play video: The Sri Lankan Bartender behind Colombo's forbidden Love story : Dassa Vlogs ep 11"><img src="https://i.ytimg.com/vi/li_pTdyu1Z4/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span><span class="yt-t">The Sri Lankan Bartender behind Colombo's forbidden Love story : Dassa Vlogs ep 11</span></button></div>
-  <section class="more-films" aria-label="More films from this story"><h2>More from this story</h2><div class="films"><button type="button" class="yt" data-yt="LPF9ghFLct8" aria-label="Play video: Dassa Vlogs Ep 11 Teaser"><img src="https://i.ytimg.com/vi/LPF9ghFLct8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span><span class="yt-t">Dassa Vlogs Ep 11 Teaser</span></button></div></section>
-  <h2>Credits</h2>
-  <ul class="credits"><li><b>Director and producer:</b> <a href="https://www.instagram.com/eashdas/" target="_blank" rel="noopener">Eashaan Dassanayaka</a></li><li><b>Videographer:</b> <a href="https://www.instagram.com/malalanayak/" target="_blank" rel="noopener">Panduka Malalanayake</a></li><li><b>Camera assistant:</b> <a href="https://www.instagram.com/avishka_cheese/" target="_blank" rel="noopener">Avishka Perera</a></li><li><b>Photographer:</b> <a href="https://www.instagram.com/sebastianolegard/" target="_blank" rel="noopener">Sebastian Olegard</a></li><li><b>Production assistant and editor:</b> <a href="https://www.instagram.com/janithdassanayaka/" target="_blank" rel="noopener">Janith Dassanayaka</a></li><li><b>Production house:</b> Extract and Design</li><li><b>Featuring:</b> Vimuth Joseph</li><li><b>Location:</b> <a href="https://www.instagram.com/thelovebarsl/" target="_blank" rel="noopener">The Love Bar</a>, Flamingo House, Colombo 7</li><li><b>Music:</b> YouTube Audio Library; teaser music by Quincas Moreira</li></ul>
-  <p class="note">A non-profit video, first published on Dassa Vlogs on 9 June 2020 (teaser 4 June 2020).</p>
+  <p class="archive"><b>From the archive</b>This story is based on a film first published on Dassa Vlogs on 9 June 2020, while The Dosage was on hold. Names, places and details are as they were at the time of filming.</p>
+  <p class="lede">In March 2020, Eashaan Dassanayaka landed back in Sri Lanka. Weeks later, he walked up to the front door of a bar in Colombo 7 and found Vimuth Joseph standing there. The two had been at school together. The last time they’d seen each other was almost six years earlier.</p>
+  <h2>The reunion</h2>
+  <p>What started as a hello at the door turned into an evening of catching up, with a camera rolling.</p>
+  <div class="wide film">
+    <span class="label">▶ Watch the film</span>
+    <h3>The Sri Lankan Bartender behind Colombo's forbidden Love story</h3>
+    <button type="button" class="yt big" data-yt="li_pTdyu1Z4" aria-label="Play video: The Sri Lankan Bartender behind Colombo's forbidden Love story : Dassa Vlogs ep 11"><img src="posts/img/travels/lovebar-cover.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span><span class="yt-t">The Sri Lankan Bartender behind Colombo's forbidden Love story : Dassa Vlogs ep 11</span></button>
+  </div>
+  <blockquote class="bigquote">Almost six years apart, and then a hello at the door.</blockquote>
+  <figure class="pic"><img src="posts/img/travels/lovebar-eashaan.jpg" alt="Eashaan Dassanayaka on the night of filming" width="720" height="720" loading="lazy"><figcaption>Eashaan on the night of filming. Photo: Sebastian Olegard</figcaption></figure>
+  <h2>Behind the camera</h2>
+  <p>Unlike his other vlogs, Eashaan invested real time in this one. He brought in a small crew so viewers could see the place and the people the way they deserved. A one-minute teaser went out on 4 June 2020, and the full 13-minute episode followed on 9 June.</p>
+  <p><em>It was a non-profit video, made for the love of the story.</em></p>
+  <section class="more-films" aria-label="More films from this story"><div class="films"><button type="button" class="yt" data-yt="LPF9ghFLct8" aria-label="Play video: Dassa Vlogs Ep 11 Teaser"><img src="https://i.ytimg.com/vi/LPF9ghFLct8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span><span class="yt-t">Dassa Vlogs Ep 11 Teaser</span></button></div></section>
+  <div class="credits-box"><h2>Credits</h2>
+  <ul class="credits"><li><b>Director and producer:</b> <a href="https://www.instagram.com/eashdas/" target="_blank" rel="noopener">Eashaan Dassanayaka</a></li><li><b>Videographer:</b> <a href="https://www.instagram.com/malalanayak/" target="_blank" rel="noopener">Panduka Malalanayake</a></li><li><b>Camera assistant:</b> <a href="https://www.instagram.com/avishka_cheese/" target="_blank" rel="noopener">Avishka Perera</a></li><li><b>Photographer:</b> <a href="https://www.instagram.com/sebastianolegard/" target="_blank" rel="noopener">Sebastian Olegard</a></li><li><b>Production assistant and editor:</b> <a href="https://www.instagram.com/janithdassanayaka/" target="_blank" rel="noopener">Janith Dassanayaka</a></li><li><b>Production house:</b> Extract and Design</li><li><b>Featuring:</b> Vimuth Joseph</li><li><b>Location:</b> Love Bar, Colombo 7</li><li><b>Music:</b> YouTube Audio Library; teaser music by Quincas Moreira</li></ul>
+  <p class="note">A non-profit video, first published on Dassa Vlogs on 9 June 2020 (teaser 4 June 2020).</p></div>
+  </div>
 </article>
 
 <article class="page article" data-page="post-jeana" hidden>
@@ -1137,7 +1182,7 @@ footer a{color:inherit}
     {id:'post-default',cat:'Explained',date:'12 Oct 2026',title:'What happens when a country can’t pay?',dek:'The dollar jar, the default, and why the fuel queues began.'},
     {id:'post-back',cat:'News',date:'12 Oct 2026',title:'The Dosage is back',dek:'One story per edition, told in full. Printed to keep, with everything else a scan away.'},
     {id:'post-jeana',cat:'Editor’s Travels',date:'5 Aug 2020',title:'Breaking the status quo with Jeana De Zoysa',dek:'Dassa Vlogs, episode 13. Climate change, veganism and wildlife, on the banks of Bolgoda.'},
-    {id:'post-lovebar',cat:'Editor’s Travels',date:'9 Jun 2020',title:"The Sri Lankan Bartender behind Colombo's forbidden Love story",dek:'Dassa Vlogs, episode 11. An old school friend, six cocktails and a case for drinking local.'},
+    {id:'post-lovebar',cat:'Editor’s Travels',date:'9 Jun 2020',title:"The Sri Lankan Bartender behind Colombo's forbidden Love story",dek:'Dassa Vlogs, episode 11. An old school friend, met again by chance almost six years on.'},
     {id:'post-ride',cat:'Archive',date:'From the archive',title:'The First Ride',dek:'Before cycling was a movement in Sri Lanka, The Dosage was there.'}
   ];
   function card(p){
