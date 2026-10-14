@@ -343,7 +343,7 @@ footer a{color:inherit}
       <a href="#stories" data-nav="stories">Stories</a>
       <a href="#edition" data-nav="edition">Edition 01</a>
       <a href="#original" data-nav="original">The Original</a>
-      <a href="#archive" data-nav="archive">Archive</a>
+      <a href="#travels" data-nav="travels">Editor’s Travels</a>
       <a href="#about" data-nav="about">About</a>
       <a class="cta" href="#follow">Subscribe</a>
     </nav>
@@ -441,7 +441,7 @@ footer a{color:inherit}
         <h1 id="orig-h" class="edh">Issue 01</h1>
         <p class="edsub">December 2015.</p>
         <p>The first Dosage: Sri Lanka’s first digital video magazine, built around health, fitness and the way we live. Ten stories, most of them filmed by our video team as we reported it. Read them again here, with the films beside them.</p>
-        <div class="row"><a class="btn" href="#orig-stories">Read the stories ↓</a><a class="btn ghost" href="#reader">Flip the original</a></div>
+        <div class="row"><a class="btn" href="#orig-stories">Read the stories ↓</a><a class="btn ghost" href="#reader">Flip the original</a><a class="btn ghost" href="#post-ride">From the archive: The First Ride</a></div>
       </div>
     </div>
   </section>
@@ -1408,7 +1408,7 @@ footer a{color:inherit}
 </article>
 
 <article class="page article" data-page="post-ride" hidden>
-  <a class="back" href="#archive">← Archive</a>
+  <a class="back" href="#original">← The Original</a>
   <h1>From the archive: The First Ride</h1>
   <p class="dek">Before cycling was a movement in Sri Lanka, The Dosage was there.</p>
   <div class="byline"><span class="label red">Archive</span><span class="label">The Dosage</span></div>
@@ -1494,6 +1494,7 @@ footer a{color:inherit}
   var navs=document.querySelectorAll('[data-nav]');
   function route(){
     var h=(location.hash||'#home').slice(1);
+    if(h==='archive')h='original';
     if(h==='follow')return;
     var anchor=null;
     if(!document.querySelector('[data-page="'+h+'"]')){var el=document.getElementById(h);var pg=el&&el.closest('.page');if(pg){anchor=el;h=pg.dataset.page}}
@@ -1501,7 +1502,8 @@ footer a{color:inherit}
     pages.forEach(function(p){var on=p.dataset.page===h;p.hidden=!on;if(on)found=true});
     if(!found){h='home';pages.forEach(function(p){p.hidden=p.dataset.page!=='home'})}
     var section=h.indexOf('post-')===0?'stories':h;
-    if(h==='post-ride')section='archive';
+    if(h==='post-ride')section='original';
+    if(h==='post-lovebar'||h==='post-jeana')section='travels';
     if(h.indexOf('orig-')===0)section='original';
     navs.forEach(function(n){if(n.dataset.nav===section)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current')});
     if(anchor){anchor.scrollIntoView()}else{window.scrollTo(0,0)}
