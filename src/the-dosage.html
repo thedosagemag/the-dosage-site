@@ -305,6 +305,19 @@ footer a{color:inherit}
 .ftile:focus-visible{outline:2px solid var(--reel-hi);outline-offset:6px}
 .reel-more{display:inline-block;margin-top:28px;font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--reel-ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:4px}
 @media (prefers-reduced-motion:reduce){.ftile .shot img{transition:none}}
+
+/* Home: stat-led lead and the Colombo · Melbourne numbers strip */
+.lead .img.stat{display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(18px,3vw,32px);color:#fff}
+.lead .img.stat .big{font-family:var(--display);font-weight:900;font-size:clamp(3.6rem,10vw,7.6rem);line-height:.85;letter-spacing:-.035em;color:#fff}
+.lead .img.stat .cap{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:14px;max-width:38ch;line-height:1.5}
+.numstrip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:4px solid var(--ink)}
+@media (max-width:900px){.numstrip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.numstrip{grid-template-columns:minmax(0,1fr)}}
+.numstrip a{display:flex;flex-direction:column;gap:8px;padding:20px clamp(12px,2vw,22px) 22px 0;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--rule);min-width:0}
+.numstrip b{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:.9;letter-spacing:-.03em;color:var(--red-text);font-variant-numeric:tabular-nums}
+.numstrip span{font-size:1rem;line-height:1.4}
+.numstrip em{font-style:normal;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto}
+.numstrip a:hover span{text-decoration:underline;text-underline-offset:3px}
 </style>
 
 <header class="bar">
@@ -332,12 +345,12 @@ footer a{color:inherit}
 
   <section aria-labelledby="latest-h">
     <div class="head"><h2 id="latest-h">Latest</h2><a class="label" href="#stories">All stories →</a></div>
-    <a class="lead" href="#post-gap">
-      <div class="img" role="img" aria-label="Story image placeholder"><span class="tab">D</span></div>
+    <a class="lead" href="#post-dengue">
+      <div class="img stat" role="img" aria-label="82,838 dengue cases in Sri Lanka in 2026"><span class="tab">D</span><span class="big">82,838</span><span class="cap">Dengue cases in Sri Lanka this year, to 7 October. Every district has reported cases.</span></div>
       <div class="txt">
-        <div class="meta"><span class="label red">The gap</span><time>12 Oct 2026</time></div>
-        <h3>Sri Lanka's recovery, in four numbers</h3>
-        <p>The World Bank says the economy is back. The same report shows why many families don't feel it.</p>
+        <div class="meta"><span class="label red">Health</span><time>13 Oct 2026</time></div>
+        <h3>Dengue in 2026: over 80,000 cases, and every district hit</h3>
+        <p>Sri Lanka is having a heavy dengue year. Most of what keeps it away is done at home, once a week.</p>
         <span class="label">Read the story →</span>
       </div>
     </a>
@@ -345,6 +358,20 @@ footer a{color:inherit}
 
   <section aria-label="More stories" style="padding-top:0;border-top:0">
     <div class="grid" data-list="home"></div>
+  </section>
+
+  <section class="reel" aria-labelledby="reel-home"><div class="reel-head"><div><span class="label red">Films · Dassa Vlogs</span><h2 id="reel-home">Editor’s Travels</h2></div><p>While The Dosage was on hold, our editor kept filming. Two stories from 2020, now with full write-ups.</p></div>
+  <div class="films-grid" data-list="travels"></div>
+  <a class="reel-more" href="#travels">All Editor’s Travels →</a></section>
+
+  <section aria-labelledby="nums-h" style="border-top:0;padding-top:0">
+    <div class="head"><h2 id="nums-h">Colombo · Melbourne</h2><a class="label" href="#stories">All stories →</a></div>
+    <div class="numstrip">
+      <a href="#post-melbourne"><b>65,152</b><span>Sri Lanka-born people living in Greater Melbourne</span><em>ABS, 2021 Census</em></a>
+      <a href="#post-remit"><b>$8.07bn</b><span>sent home by Sri Lankans abroad in 2025, a record</span><em>Central Bank of Sri Lanka</em></a>
+      <a href="#post-phi"><b>78,000</b><span>older Australians expected to drop private cover after the rebate cut</span><em>ABC News</em></a>
+      <a href="#post-imf"><b>Mar 2027</b><span>when Sri Lanka’s $3 billion IMF programme ends</span><em>IMF</em></a>
+    </div>
   </section>
 </div>
 
@@ -1258,7 +1285,7 @@ footer a{color:inherit}
     return a;
   }
   document.querySelectorAll('[data-list]').forEach(function(el){
-    var L=el.dataset.list,list=L==='home'?posts.slice(1,4):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
+    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-dengue'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
     list.forEach(function(p){el.appendChild(L==='travels'?ftile(p):card(p))});
   });
   var pages=document.querySelectorAll('[data-page]');
