@@ -67,6 +67,7 @@ section{padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--rule)}
 .lead{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,48px);text-decoration:none}
 @media (max-width:820px){.lead{grid-template-columns:minmax(0,1fr)}}
 .lead .img{aspect-ratio:16/10;max-width:100%;background:radial-gradient(circle at 64% 38%,rgba(255,170,70,.5) 0,rgba(255,170,70,0) 26%),linear-gradient(180deg,#2B2620 0%,#0E0D0B 100%);position:relative}
+.lead .img.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .lead .img .tab{position:absolute;top:0;right:0;width:56px;height:56px;background:#D7261E;color:#fff;font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;display:flex;align-items:center;justify-content:center}
 .lead .txt{display:flex;flex-direction:column;gap:14px;min-width:0}
 .lead h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1}
@@ -374,12 +375,12 @@ footer a{color:inherit}
 
   <section aria-labelledby="latest-h">
     <div class="head"><h2 id="latest-h">Latest</h2><a class="label" href="#stories">All stories →</a></div>
-    <a class="lead" href="#post-dengue">
-      <div class="img stat" role="img" aria-label="102,769 dengue cases in Sri Lanka in 2026"><span class="tab">D</span><span class="big">102,769</span><span class="cap">Dengue cases in Sri Lanka this year, National Dengue Control Unit, 15 October.</span></div>
+    <a class="lead" href="#post-retina">
+      <div class="img photo"><img src="posts/img/news/roadster/tesla-roadster-liftoff.jpg" alt="The Tesla Roadster lifting off on compressed-air thrusters" width="1600" height="933"><span class="tab">D</span></div>
       <div class="txt">
-        <div class="meta"><span class="label red">Health</span><time>13 Oct 2026</time></div>
-        <h3>Dengue in 2026: over 100,000 cases so far</h3>
-        <p>Sri Lanka is having a heavy dengue year. Most of what keeps it away is done at home, once a week.</p>
+        <div class="meta"><span class="label red">Explained</span><time>16 Oct 2026</time></div>
+        <h3>Elon Musk joked his new car could detach your retina. Could it?</h3>
+        <p>Tesla says its flying Roadster will only get quicker, up to the limit of the human body. We checked the eye science.</p>
         <span class="label">Read the story →</span>
       </div>
     </a>
@@ -1730,7 +1731,7 @@ footer a{color:inherit}
     return a;
   }
   document.querySelectorAll('[data-list]').forEach(function(el){
-    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-dengue'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
+    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-retina'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
     list.forEach(function(p){el.appendChild(L==='travels'?ftile(p):card(p))});
   });
   var pages=document.querySelectorAll('[data-page]');
