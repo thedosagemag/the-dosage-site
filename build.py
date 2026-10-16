@@ -27,7 +27,7 @@ def ogmeta(title,desc,url,img,typ='article'):
       f'<meta property="og:site_name" content="The Dosage">\n<meta property="og:type" content="{typ}">\n'
       f'<meta property="og:title" content="{e(title)}">\n<meta property="og:description" content="{e(desc)}">\n'
       f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{SITE}{img}">\n'
-      f'<meta name="twitter:card" content="summary_large_image">\n')
+      f'<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:site" content="@TheDosageMag">\n')
 # home
 home_meta=ogmeta('The Dosage','The Dosage. Reality, unfiltered. Health, fitness, lifestyle and the stories that connect Colombo and Melbourne, explained simply.',SITE,DEFAULT_IMG,'website')
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(wrap(src,home_meta))
