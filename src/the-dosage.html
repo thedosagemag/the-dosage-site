@@ -96,6 +96,32 @@ section{padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--rule)}
 .numbers div{background:var(--paper);padding:16px}
 .numbers b{display:block;font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
 .numbers span{font-size:.95rem}
+/* story extras: callout boxes, simple bar chart, video link */
+.article .callout{background:var(--card);padding:20px 22px;margin:1.8em 0}
+.article .callout.side{border-top:4px solid var(--red)}
+.article .callout h3{font-family:var(--display);font-weight:800;font-size:1.2rem;line-height:1.2;margin:0 0 .6em}
+.article .callout ul,.article .callout ol{margin:0 0 .8em;padding-left:1.2em}
+.article .callout li{margin-bottom:.45em}
+.article .callout .pic{margin:16px 0}
+.article .watch{display:flex;gap:14px;align-items:center;background:#14120F;color:#F1EDE4;padding:16px 18px;text-decoration:none;margin:0 0 26px}
+.article .watch .play{flex:0 0 44px;height:44px;border-radius:50%;background:#D7261E;display:flex;align-items:center;justify-content:center}
+.article .watch .play::after{content:"";border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.article .watch b{font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.15;display:block}
+.article .watch small{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#A8A196}
+.gbars{border:1px solid var(--rule);padding:16px 16px 12px;margin:1.6em 0}
+.gbars h3{font-family:var(--display);font-weight:800;font-size:1.05rem;margin:0}
+.gbars .sub{font-size:.9rem;color:var(--muted);margin:2px 0 10px}
+.gbars .key{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-bottom:10px}
+.gbars .key i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.gbars .row{margin-bottom:10px}
+.gbars .row span{display:block;font-size:.92rem;line-height:1.25}
+.gbars .row div{display:flex;align-items:center;gap:8px;height:22px}
+.gbars .row div i{display:block;height:18px;border-radius:0 4px 4px 0;min-width:3px}
+.gbars .row div em{font-style:normal;font-family:var(--mono);font-size:.78rem}
+.gbars .car i{background:var(--red)}.gbars .ref i{background:#2F6DB0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .gbars .ref i{background:#5B93D3}}
+:root[data-theme="dark"] .gbars .ref i{background:#5B93D3}
+.gbars .note{margin-top:6px}
 @media (max-width:480px){.numbers{grid-template-columns:minmax(0,1fr)}}
 
 /* edition */
@@ -1128,6 +1154,89 @@ footer a{color:inherit}
   <p class="note">Source: Sri Lanka Tourism Development Authority data, as reported by the <a href="https://www.ft.lk/business/Tourism-crosses-1-7-m-arrivals-but-remains-behind-2025-pace/34-798240" target="_blank" rel="noopener">Daily FT</a>, 6 October 2026.</p>
 </article>
 
+<article class="page article" data-page="post-retina" hidden>
+  <a class="back" href="#stories">← Stories</a>
+  <h1>Elon Musk joked his new car could detach your retina. Could it?</h1>
+  <p class="dek">Tesla says its flying Roadster will only get quicker, up to the limit of the human body. We checked what eye science says about that limit.</p>
+  <div class="byline"><span class="label red">Explained · Health &amp; Science</span><span class="label">Eashaan Dassanayaka</span><span class="label">16 October 2026</span></div>
+  <figure class="pic"><img src="posts/img/news/roadster/tesla-roadster-liftoff.jpg" alt="The Tesla Roadster lifting off the ground on jets of compressed air, seen from behind" width="1600" height="933"><figcaption>Tesla’s second-generation Roadster lifts off on its compressed-air thrusters. Photo: Courtesy of Tesla, Inc.</figcaption></figure>
+  <a class="watch" href="https://youtu.be/qt5p-_tE8d0" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b>Watch Tesla’s Roadster launch</b><small>Video · YouTube · opens in a new tab</small></span></a>
+  <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Roadster event livestream <a href="https://t.co/G0jU4mWfid">https://t.co/G0jU4mWfid</a></p>&mdash; Tesla (@Tesla) <a href="https://x.com/Tesla/status/2110788059008819215?ref_src=twsrc%5Etfw">October 15, 2026</a></blockquote>
+  <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+  <p>Tesla has finally unveiled its second-generation Roadster, nine years after it was first promised. At a launch at SpaceX’s rocket test centre in McGregor, Texas, near Waco, on 15 October, the car hopped over a row of other vehicles on compressed-air thrusters and, in a live run, went from 0 to 96 km/h (60 mph) in 0.81 seconds.</p>
+  <p>Then Elon Musk said the production car would be even quicker. Citing Newton’s second law, he said more force and less mass would mean more acceleration. How much quicker? Tesla would, he said, “ride the limit of don’t detach the retina” of the person inside.</p>
+  <p>It was a joke. But it sets an unusual target: a car limited by the human body, not by its motor. So we looked at the science.</p>
+  <h2>What 0.81 seconds does to you</h2>
+  <p>Reaching 96 km/h in 0.81 seconds means an average push of about <b>3.4 g</b>, more than three times your body weight pressing you back into the seat. Tesla says its top “Rocket” version will do it in under 0.59 seconds, a claim not yet shown in public. That works out to about <b>4.6 g</b> on average, with brief peaks higher.</p>
+  <figure class="pic"><img src="posts/img/news/roadster/tesla-roadster-driver.jpg" alt="A driver in a white race suit carrying a helmet walks towards the white Tesla Roadster on a desert salt flat" width="1600" height="1067" loading="lazy"><figcaption>The person inside is the limit, Musk says. Photo: Courtesy of Tesla, Inc.</figcaption></figure>
+  <div class="numbers">
+    <div><b>3.4 g</b><span>Average force in the 0.81-second live run (our calculation)</span></div>
+    <div><b>4.6 g</b><span>Average force if the “Rocket” version hits its claimed 0.59 seconds</span></div>
+    <div><b>Mach 0.5</b><span>Musk’s top-speed goal, about 617 km/h</span></div>
+    <div><b>2028</b><span>Tesla’s target for starting production</span></div>
+  </div>
+  <h2>Which way the force pushes matters most</h2>
+  <p>Pilots and astronauts have been tested for decades, and the main lesson is that direction matters. When g-force runs from head to toe, as in a fighter jet’s tight turn, blood drains away from the eyes. NASA research found untrained people start losing side vision at about 4.1 g and black out at about 4.7 g.</p>
+  <p>A car launch pushes you from chest to back instead, and the body copes far better. NASA research puts the seated limit for sustained chest-to-back g at about 8 g, and the limiting factors are breathing and chest pain, not eyesight. In very short pulses, people have taken around 40 g for a quarter of a second.</p>
+  <figure class="pic"><img src="posts/img/news/roadster/car-launch-vs-jet-turn.jpg" alt="Two panels. Left: a driver pressed back into a car seat, arrow from chest to back, labelled car launch, about 3.4 g. Right: a fighter pilot in a g-suit, arrow from head to toe, labelled jet turn, up to 9 g" width="1600" height="900" loading="lazy"><figcaption>A car launch presses you back into the seat. A jet’s hard turn pulls blood from head to toe, which is much harder on the eyes. Illustration: The Dosage</figcaption></figure>
+  <div class="gbars" role="figure" aria-label="Bar chart comparing average g-forces">
+    <h3>How the Roadster’s launch compares</h3>
+    <p class="sub">Average g-force, chest-to-back unless noted, drawn to scale.</p>
+    <div class="key"><span><i style="background:var(--red)"></i>Tesla Roadster (our calculations)</span><span><i style="background:#2F6DB0"></i>Human tests (NASA, US Air Force, published research)</span></div>
+    <div class="row car"><span>Roadster “Performance” (claimed under 1.6 s)</span><div><i style="width:2.8%"></i><em>1.7 g</em></div></div><div class="row car"><span>Roadster live run (0.81 s)</span><div><i style="width:5.6%"></i><em>3.4 g</em></div></div><div class="row car"><span>Roadster “Rocket” (claimed under 0.59 s)</span><div><i style="width:7.5%"></i><em>4.6 g</em></div></div><div class="row ref"><span>Head-to-toe blackout, untrained (for comparison)</span><div><i style="width:7.7%"></i><em>4.7 g</em></div></div><div class="row ref"><span>Seated chest-to-back, sustained limit</span><div><i style="width:13.1%"></i><em>8 g</em></div></div><div class="row ref"><span>Brief chest-to-back pulse (about 0.25 s)</span><div><i style="width:65.6%"></i><em>40 g</em></div></div><div class="row ref"><span>John Paul Stapp’s rocket-sled stop, 1954</span><div><i style="width:75.8%"></i><em>46.2 g</em></div></div>
+    <p class="note">These figures act in different directions and for different lengths of time, so they give a sense of scale, not interchangeable human limits.</p>
+  </div>
+  <aside class="callout side">
+    <p class="label red" style="margin:0 0 6px">Side note</p>
+    <h3>Speed doesn’t hurt. Acceleration does. Just ask a fighter pilot.</h3>
+    <p>The fastest crewed aircraft ever flown, NASA’s rocket-powered X-15, reached 4,520 mph (Mach 6.7) in 1967. The SR-71 Blackbird spy plane cruised at up to Mach 3.3. At a steady speed, though, the body feels nothing at all, which is why airline passengers can eat lunch at cruising speed. What strains the body, and the eyes, is <b>changing</b> speed or direction quickly.</p>
+    <p>That’s why fighter pilots worry most about g-force. An F-16 can pull up to 9 g in a hard turn, which tries to drain blood from the head. The first warning is “light loss”: vision dims and narrows before the pilot can pass out. Pilots fight it in three ways:</p>
+    <figure class="pic"><img src="posts/img/news/roadster/pilot-g-suit.jpg" alt="A fighter pilot in a jet seat tilted 30 degrees from upright. Blue g-suit bladders squeeze inward on the stomach, thighs and calves, a red arrow shows blood pushed up to the eyes, and a grey arrow shows g-force pulling blood down to the feet" width="1122" height="1402" loading="lazy"><figcaption>How a g-suit keeps blood in a pilot’s head and eyes during hard turns. Illustration: The Dosage</figcaption></figure>
+    <ol>
+      <li><b>A g-suit.</b> Air bladders inflate around the stomach and legs. The US Air Force says the squeeze forces blood “up toward your cranium” to help keep vision and consciousness.</li>
+      <li><b>The straining manoeuvre.</b> Pilots tense their legs, buttocks and stomach, and take a quick breath about every three seconds, to keep blood pressure up in the head.</li>
+      <li><b>A tilted seat.</b> The F-16’s seat leans back 30 degrees instead of the usual 13, which the US Navy says improves g tolerance.</li>
+    </ol>
+    <p style="margin:0">Notice that none of this is about the retina coming loose. For pilots, the danger to the eyes is blood leaving them. That’s the opposite direction to a car launch, which presses you back into your seat.</p>
+  </aside>
+  <h2>So can acceleration detach a retina?</h2>
+  <p>The retina is the thin, light-sensing layer at the back of the eye. A detachment happens when it peels away from the tissue that supports it. It’s an emergency that can cause permanent vision loss.</p>
+  <p>Doctors have documented cases linked to acceleration, from roller coasters rather than cars. In 2024, eye specialists in Toronto reported two young women whose retinas detached after roller-coaster rides. Both already had risk factors: one had a family history of detachment, and the other was very short-sighted with weak areas of retina. Reviewing other reported cases, the authors concluded that a “structural predisposition is likely necessary.” In eyes without that weakness, similar forces caused bleeding, but not detachment. Two cases show a possible link, not proof, and they say nothing directly about a car.</p>
+  <p>Cases like these are rare. Answering a reader’s question for the American Academy of Ophthalmology, ophthalmologist Dr Richard Bensinger said roller coasters are “unlikely” to be a problem for short-sighted people.</p>
+  <figure class="pic"><img src="posts/img/news/roadster/eye-retina.jpg" alt="Cross-section of the eye with the cornea, lens, vitreous gel, retina and optic nerve labelled, and an inset showing the retina peeling away from the back wall" width="1122" height="1402" loading="lazy"><figcaption>The retina lines the back of the eye. In a detachment (inset), it peels away from the wall behind it. In a healthy eye, a car launch’s force is very unlikely to cause this. Illustration: The Dosage</figcaption></figure>
+  <p>The most extreme human test on record is US Air Force doctor John Paul Stapp’s. In 1954 he rode a rocket sled to 632 mph (about 1,017 km/h), then stopped in 1.4 seconds, taking <b>46.2 g</b>. Almost all the tiny blood vessels in his eyes burst, and he feared his retinas had detached. He was temporarily blinded and left hospital the next day, but his eyesight was never quite the same. His was a sudden stop, not a launch, so it isn’t a safe or unsafe limit for a car; it shows how far human tests have gone.</p>
+  <h2>Our verdict</h2>
+  <p>No one has set a g-force at which a retina detaches. Force direction, how long it lasts and the state of the eye all matter. There is currently not enough evidence to show that the Roadster’s reported acceleration would cause retinal detachment in an otherwise healthy eye. For an eye that’s already vulnerable, the reported cases are rare, but they suggest a hard launch could matter, whether it comes from a roller coaster or a hypercar. So Musk’s joke points at a real risk, but the evidence doesn’t show it for most people at these speeds.</p>
+  <blockquote>“The production car will actually do better than that.” <span class="label" style="display:block;margin-top:10px">Elon Musk, at the launch</span></blockquote>
+  <h2>Why it matters to you</h2>
+  <ul>
+    <li><b>Know your risk.</b> Retinal detachment is more likely if you’re very short-sighted, have a family history of it, have had eye surgery such as cataract removal or a serious eye injury, or are aged about 40 to 70.</li>
+    <li><b>Before extreme rides</b> such as launch roller coasters, theme-park thrill rides or track experiences, ask your eye doctor if any of those apply to you.</li>
+    <li><b>Know the warning signs:</b> a sudden shower of floaters, flashes of light, blurred vision, or a curtain-like shadow over your vision. These need care right away. It’s painless, so don’t wait. In Australia, see your GP or optometrist the same day, or go to an emergency department. In Sri Lanka, go to the nearest hospital eye unit.</li>
+    <li><b>The car itself:</b> Tesla is aiming to start production in 2028. It is taking reservations of US$50,000 to US$250,000, TechCrunch reported, and Musk said the car may not be legal in all places, so the thruster versions may never be road-legal in Australia or Sri Lanka.</li>
+  </ul>
+  <p class="note"><b>How we worked it out:</b> average g = 26.8 m/s (60 mph) ÷ time ÷ 9.81 m/s². These are average accelerations worked out from Tesla’s claimed times, not measured forces on the driver and not injury thresholds; peak forces will be higher. The human tolerance figures come from controlled tests and vary from person to person.</p>
+  <p class="note">Sources: Tesla Roadster launch, 15 October 2026 (Tesla livestream); <a href="https://techcrunch.com/2026/10/15/tesla-reveals-spacex-powered-roadster-that-flies-and-falls-with-style/" target="_blank" rel="noopener">TechCrunch</a>; Pickel et al., <a href="https://doi.org/10.1159/000540878" target="_blank" rel="noopener">“Roller Coasters and Retinal Detachment”</a>, Case Reports in Ophthalmology, 2024; <a href="https://www.aao.org/eye-health/ask-ophthalmologist-q/are-roller-coasters-safe-nearsighted-people" target="_blank" rel="noopener">American Academy of Ophthalmology</a>; <a href="https://ntrs.nasa.gov/citations/19690003258" target="_blank" rel="noopener">NASA Technical Reports Server, “Acceleration”</a>; <a href="https://www.nasa.gov/history/x15/knight.html" target="_blank" rel="noopener">NASA, X-15</a>; <a href="https://www.si.edu/object/lockheed-sr-71-blackbird%3Anasm_A19920072000" target="_blank" rel="noopener">Smithsonian, SR-71</a>; <a href="https://www.navy.mil/Resources/Fact-Files/Display-FactFiles/Article/2166130/f-16ab-fighting-falcon-fighter/" target="_blank" rel="noopener">US Navy, F-16</a>; <a href="https://www.safety.af.mil/News/Features/Display/Article/434496/agsm-or-g-locis-the-squeeze-worth-the-juice/" target="_blank" rel="noopener">US Air Force Safety Center</a>; <a href="https://thespacereview.com/article/410/1" target="_blank" rel="noopener">The Space Review</a>; <a href="https://airmanmagazine.af.mil/Features/Display/Article/2595921/staying-on-track" target="_blank" rel="noopener">Airman magazine</a> and <a href="https://www.wpafb.af.mil/News/Article-Display/Article/1505044/fastest-man-on-earth-started-out-as-aeromedical-researcher/" target="_blank" rel="noopener">Wright-Patterson Air Force Base</a>; <a href="https://www.mayoclinic.org/diseases-conditions/retinal-detachment/symptoms-causes/syc-20351344" target="_blank" rel="noopener">Mayo Clinic</a>.</p>
+  <p class="note"><i>General information, not medical advice. If you have symptoms, get medical help straight away.</i></p>
+  <aside class="callout side">
+    <p class="label red" style="margin:0 0 6px">Editorial review · 16 October 2026</p>
+    <h3>How we checked this story</h3>
+    <ul>
+      <li><b>Checked against Tesla’s livestream:</b> Musk’s quotes, the 0.81-second run, the venue and the 2028 production target.</li>
+      <li><b>Our calculations:</b> the 1.7 g, 3.4 g and 4.6 g figures are averages worked out from Tesla’s claimed times, not measured forces on the driver.</li>
+      <li><b>Medical and historical sources:</b> a 2024 case series in Case Reports in Ophthalmology, NASA acceleration research, and US Air Force records on John Paul Stapp.</li>
+    </ul>
+    <p class="note">AI tools helped with research and a preliminary review. The Dosage editorial team made every final decision. No endorsement by any AI company is implied.</p>
+    <p><b>What <a href="https://x.ai" target="_blank" rel="noopener">Grok</a> (xAI) said</b> when we asked it to review this story on 16 October 2026:</p>
+    <ul>
+      <li>Does the article fairly represent Musk’s retina comment? “Yes.”</li>
+      <li>Is any statement about Tesla or Musk inaccurate or unfair? “No major inaccuracies or unfairness.”</li>
+      <li>“Overall the draft is careful, evidence-based, and fair.”</li>
+    </ul>
+    <p style="margin:0">Spotted an error? Email <a href="mailto:info@thedosagemag.com">info@thedosagemag.com</a></p>
+  </aside>
+</article>
+
 <article class="page article" data-page="post-transport" hidden>
   <a class="back" href="#stories">← Stories</a>
   <h1>Half-price trains, trams and buses: what you’ll pay, and how to tap with your bank card</h1>
@@ -1583,6 +1692,7 @@ footer a{color:inherit}
 <script>
 (function(){
   var posts=[
+    {id:'post-retina',cat:'Explained',date:'16 Oct 2026',title:'Elon Musk joked his new car could detach your retina. Could it?',dek:'Tesla says its flying Roadster will only get quicker, up to the limit of the human body. We checked the eye science.'},
     {id:'post-transport',cat:'Melbourne',date:'15 Oct 2026',title:'Half-price trains, trams and buses: what you’ll pay, and how to tap with your bank card',dek:'Fares are half price until 1 January. What concession holders need to do before using tap and go.'},
     {id:'post-twoprices',cat:'Explained',date:'15 Oct 2026',title:'Colombo or the whole country? Two ways Sri Lanka measures rising prices',dek:'Sri Lanka publishes two inflation figures every month. Which one matters depends on where you live.'},
     {id:'post-holidays',cat:'Culture',date:'15 Oct 2026',title:'Vap Poya and Deepavali: two holidays coming up',dek:'Vap Poya falls on Sunday 25 October and Deepavali on Sunday 8 November. What each one marks.'},
