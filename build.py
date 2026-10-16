@@ -17,6 +17,8 @@ IMG={'post-phi-blocked':'posts/img/news/n1-phi-blocked.jpg','post-slprices':'pos
  'post-lightning':'posts/img/news/n6-lightning.jpg','post-healthhub':'posts/img/news/n7-health-hub.jpg','post-twoprices':'posts/img/news/n9-two-prices.jpg','post-holidays':'posts/img/news/n10-holidays.jpg','post-transport':'posts/img/news/n12-transport.jpg','post-retina':'posts/img/news/roadster/tesla-roadster-liftoff.jpg','post-asthma':'posts/img/news/n8-thunderstorm-asthma.jpg','post-dengue':'posts/img/news/n11-dengue.jpg','post-phi':'posts/img/2026-10-13-phi.jpg',
  'post-lovebar':'posts/img/travels/lovebar-hero.jpg','post-jeana':'posts/img/travels/jeana-bolgoda.jpg'}
 DEFAULT_IMG='the-dosage-logo-square.png'
+# story pages: one short Press Council line; the full notice and badges stay on the homepage
+APC_SHORT='<span class="label" style="flex-basis:100%">Bound by the Australian Press Council’s Standards of Practice · <a href="#standards">Complaints</a></span>'
 def wrap(body_src, meta, extra=''):
     b=body_src.replace('\n\n<header class="bar">','\n</head>\n<body>\n\n<header class="bar">',1)
     assert b!=body_src
@@ -40,6 +42,7 @@ for m in re.finditer(r'<article class="page article[^"]*" data-page="(post-[a-z0
     d=re.search(r'<p class="dek">(.*?)</p>',body,re.S); desc=html.unescape(re.sub('<[^>]+>','',d.group(1))).strip() if d else ''
     url=f'{SITE}stories/{slug}/'
     page_src=src.replace('<title>The Dosage</title>',f'<title>{html.escape(title)} | The Dosage</title>',1)
+    page_src=re.sub(r'<!--APC-FULL-->.*?<!--/APC-FULL-->',APC_SHORT,page_src,count=1,flags=re.S)
     meta='<base href="/">\n'+ogmeta(title,desc,url,IMG.get(pid,DEFAULT_IMG))
     extra=f'<script>window.DOSAGE_PAGE="{pid}";</script>\n'
     out=os.path.join(ROOT,'stories',slug); os.makedirs(out,exist_ok=True)
