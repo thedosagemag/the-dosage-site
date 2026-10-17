@@ -12,7 +12,7 @@ HEAD='''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 '''
-IMG={'post-fuel':'posts/img/news/fuel/hero.jpg','post-phi-blocked':'posts/img/news/n1-phi-blocked.jpg','post-slprices':'posts/img/news/n2-sl-prices.jpg',
+IMG={'post-arrivals-oct':'posts/img/news/arrivals-oct/top10.jpg','post-fuel':'posts/img/news/fuel/hero.jpg','post-phi-blocked':'posts/img/news/n1-phi-blocked.jpg','post-slprices':'posts/img/news/n2-sl-prices.jpg',
  'post-rba':'posts/img/news/n3-rba.jpg','post-budget27':'posts/img/news/n4-budget.jpg','post-tourism':'posts/img/news/n5-tourism.jpg',
  'post-lightning':'posts/img/news/n6-lightning.jpg','post-healthhub':'posts/img/news/n7-health-hub.jpg','post-twoprices':'posts/img/news/n9-two-prices.jpg','post-holidays':'posts/img/news/n10-holidays.jpg','post-transport':'posts/img/news/n12-transport.jpg','post-retina':'posts/img/news/roadster/tesla-roadster-liftoff.jpg','post-asthma':'posts/img/news/n8-thunderstorm-asthma.jpg','post-dengue':'posts/img/news/n11-dengue.jpg','post-phi':'posts/img/2026-10-13-phi.jpg',
  'post-lovebar':'posts/img/travels/lovebar-hero.jpg','post-jeana':'posts/img/travels/jeana-bolgoda.jpg'}
