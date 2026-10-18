@@ -164,5 +164,43 @@ rss=('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="htt
      f'  <image><url>{SITE}{DEFAULT_IMG}</url><title>The Dosage</title><link>{SITE}</link></image>\n'
      + ''.join(t for _,t in items[:30]) + '</channel>\n</rss>\n')
 open(os.path.join(ROOT,'feed.xml'),'w').write(rss)
+
+# SmartNews SmartFormat feed with full article text (added 19 Oct 2026)
+def clean_body(body):
+    b=re.sub(r'<a class="back".*?</a>','',body,flags=re.S)
+    b=re.sub(r'<h1[^>]*>.*?</h1>','',b,count=1,flags=re.S)
+    b=re.sub(r'<p class="dek">.*?</p>','',b,count=1,flags=re.S)
+    b=re.sub(r'<div class="byline">.*?</div>','',b,count=1,flags=re.S)
+    b=re.sub(r'<figure class="pic fx">.*?</figure>','',b,flags=re.S)   # SVG charts don't render in apps
+    b=re.sub(r'<svg.*?</svg>','',b,flags=re.S)
+    b=re.sub(r'<(script|style|form|button|iframe)[^>]*>.*?</\1>','',b,flags=re.S)
+    b=re.sub(r'\s(class|style|loading|data-[a-z-]+|aria-[a-z-]+|role|id)="[^"]*"','',b)
+    b=re.sub(r'(src|href)="(?!https?:|mailto:|#)([^"]+)"',lambda m:f'{m.group(1)}="{SITE}{m.group(2)}"',b)
+    b=re.sub(r'href="#[^"]*"',f'href="{SITE}"',b)
+    return b.strip()
+sitems=[]
+for m in re.finditer(r'<article class="page article[^"]*" data-page="(post-[a-z0-9-]+)" hidden>(.*?)</article>',src,re.S):
+    pid,body=m.group(1),m.group(2); d=pubdate.get(pid)
+    u=f'{SITE}stories/{pid[5:]}/'
+    if not d or u not in meta_by_url: continue
+    _,title,img=meta_by_url[u]
+    dk=re.search(r'<p class="dek">(.*?)</p>',body,re.S); dek=html.unescape(re.sub('<[^>]+>','',dk.group(1))).strip() if dk else ''
+    labels=re.findall(r'<span class="label[^"]*">(.*?)</span>',(re.search(r'<div class="byline">(.*?)</div>',body,re.S) or re.search('()','')).group(1))
+    author=next((html.unescape(l) for l in labels[1:] if not re.search(r'\d{4}',l)),'The Dosage')
+    cat=html.unescape(re.sub('<[^>]+>','',labels[0])) if labels else 'News'
+    pd=email.utils.format_datetime(datetime.datetime(d.year,d.month,d.day,7,0,tzinfo=datetime.timezone(datetime.timedelta(hours=11))))
+    content=clean_body(body).replace(']]>',']]&gt;')
+    thumb=f'<media:thumbnail url="{SITE}{img}"/>' if img else ''
+    sitems.append((d,f'<item><title>{x(title)}</title><link>{u}</link><guid isPermaLink="true">{u}</guid><pubDate>{pd}</pubDate>'
+        f'<description>{x(dek)}</description><dc:creator>{x(author)}</dc:creator><category>{x(cat)}</category>{thumb}'
+        f'<content:encoded><![CDATA[{content}]]></content:encoded></item>\n'))
+sitems.sort(key=lambda t:t[0],reverse=True)
+sn=('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" '
+    'xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:snf="http://www.smartnews.be/snf">\n<channel>\n'
+    f'<title>The Dosage</title><link>{SITE}</link><description>Independent news, health and lifestyle connecting Colombo and Melbourne.</description>'
+    f'<pubDate>{email.utils.format_datetime(datetime.datetime.now(datetime.timezone.utc))}</pubDate><language>en</language>'
+    f'<copyright>The Dosage</copyright><ttl>15</ttl><snf:logo><url>{SITE}the-dosage-logo.png</url></snf:logo>\n'
+    + ''.join(t for _,t in sitems[:30]) + '</channel>\n</rss>\n')
+open(os.path.join(ROOT,'smartnews.xml'),'w').write(sn)
 open(os.path.join(ROOT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\nSitemap: {SITE}news-sitemap.xml\n')
 print(len(urls)-1,'story pages')
