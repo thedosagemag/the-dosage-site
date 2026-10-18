@@ -35,6 +35,7 @@ home_meta=ogmeta('The Dosage','The Dosage. Reality, unfiltered. Health, fitness,
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(wrap(src,home_meta))
 # stories
 urls=[SITE]
+meta_by_url={}
 for m in re.finditer(r'<article class="page article[^"]*" data-page="(post-[a-z0-9-]+)" hidden>(.*?)</article>',src,re.S):
     pid,body=m.group(1),m.group(2)
     slug=pid[5:]
@@ -47,11 +48,33 @@ for m in re.finditer(r'<article class="page article[^"]*" data-page="(post-[a-z0
     extra=f'<script>window.DOSAGE_PAGE="{pid}";</script>\n'
     out=os.path.join(ROOT,'stories',slug); os.makedirs(out,exist_ok=True)
     open(os.path.join(out,'index.html'),'w',encoding='utf-8').write(wrap(page_src,meta,extra))
-    urls.append(url)
+    urls.append(url); fi=re.search(r'<img[^>]+src="(posts/[^"]+)"',body); meta_by_url[url]=(pid,title,IMG.get(pid) or (fi.group(1) if fi else None))
 for extra in ['#stories','#travels','#original','#about','#standards']:
     pass
 today=datetime.date.today().isoformat()
-sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls)+'</urlset>\n'
+# publish dates from the stories list in the source, e.g. {id:'post-fuel',...,date:'17 Oct 2026',...}
+MON={m:i for i,m in enumerate(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],1)}
+pubdate={}
+for m in re.finditer(r"\{id:'(post-[a-z0-9-]+)'[^}]*?date:'(\d{1,2}) ([A-Z][a-z]{2}) (\d{4})'",src):
+    pubdate[m.group(1)]=datetime.date(int(m.group(4)),MON[m.group(3)],int(m.group(2)))
+def x(t): return html.escape(t,quote=True)
+latest=max(pubdate.values()) if pubdate else datetime.date.today()
+entries=[f'  <url><loc>{SITE}</loc><lastmod>{latest.isoformat()}</lastmod><image:image><image:loc>{SITE}{DEFAULT_IMG}</image:loc></image:image></url>\n']
+news=[]
+for u in urls[1:]:
+    pid,title,img=meta_by_url[u]
+    d=pubdate.get(pid)
+    lm=f'<lastmod>{d.isoformat()}</lastmod>' if d else ''
+    im=f'<image:image><image:loc>{SITE}{img}</image:loc></image:image>' if img else ''
+    entries.append(f'  <url><loc>{u}</loc>{lm}{im}</url>\n')
+    if d and (datetime.date.today()-d).days<=2:
+        news.append(f'  <url><loc>{u}</loc><news:news><news:publication><news:name>The Dosage</news:name><news:language>en</news:language></news:publication>'
+                    f'<news:publication_date>{d.isoformat()}</news:publication_date><news:title>{x(title)}</news:title></news:news></url>\n')
+sm=('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+    'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'+''.join(entries)+'</urlset>\n')
 open(os.path.join(ROOT,'sitemap.xml'),'w').write(sm)
-open(os.path.join(ROOT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n')
+ns=('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+    'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'+''.join(news)+'</urlset>\n')
+open(os.path.join(ROOT,'news-sitemap.xml'),'w').write(ns)
+open(os.path.join(ROOT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\nSitemap: {SITE}news-sitemap.xml\n')
 print(len(urls)-1,'story pages')
