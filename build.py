@@ -76,5 +76,28 @@ open(os.path.join(ROOT,'sitemap.xml'),'w').write(sm)
 ns=('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
     'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'+''.join(news)+'</urlset>\n')
 open(os.path.join(ROOT,'news-sitemap.xml'),'w').write(ns)
+
+# RSS feed of the 30 newest stories (added 19 Oct 2026)
+import email.utils
+items=[]
+for m in re.finditer(r"\{id:'(post-[a-z0-9-]+)',cat:'([^']*)'.*?date:'([^']*)',title:(['\"])(.*?)\4,dek:(['\"])(.*?)\6",src):
+    pid,cat,_,_,title,_,dek=m.groups()
+    d=pubdate.get(pid)
+    u=f'{SITE}stories/{pid[5:]}/'
+    if not d or u not in meta_by_url: continue
+    img=meta_by_url[u][2]
+    pd=email.utils.format_datetime(datetime.datetime(d.year,d.month,d.day,7,0,tzinfo=datetime.timezone(datetime.timedelta(hours=11))))
+    enc=f'<media:content url="{SITE}{img}" medium="image"/>' if img else ''
+    items.append((d,f'  <item><title>{x(html.unescape(title))}</title><link>{u}</link><guid isPermaLink="true">{u}</guid>'
+                 f'<pubDate>{pd}</pubDate><category>{x(html.unescape(cat))}</category><description>{x(html.unescape(dek))}</description>{enc}</item>\n'))
+items.sort(key=lambda t:t[0],reverse=True)
+rss=('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">\n<channel>\n'
+     f'  <title>The Dosage</title>\n  <link>{SITE}</link>\n'
+     '  <description>Reality, unfiltered. Health, fitness, lifestyle and the stories that connect Colombo and Melbourne, explained simply.</description>\n'
+     '  <language>en-au</language>\n'
+     f'  <atom:link href="{SITE}feed.xml" rel="self" type="application/rss+xml"/>\n'
+     f'  <image><url>{SITE}{DEFAULT_IMG}</url><title>The Dosage</title><link>{SITE}</link></image>\n'
+     + ''.join(t for _,t in items[:30]) + '</channel>\n</rss>\n')
+open(os.path.join(ROOT,'feed.xml'),'w').write(rss)
 open(os.path.join(ROOT,'robots.txt'),'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\nSitemap: {SITE}news-sitemap.xml\n')
 print(len(urls)-1,'story pages')
