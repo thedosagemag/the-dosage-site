@@ -337,6 +337,20 @@ footer a{color:inherit}
 .fe-gal figcaption b{display:block;font-family:var(--display);font-size:.9rem;letter-spacing:0;font-weight:800}
 .fe-credit{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin:0 0 22px}
 @media (max-width:560px){.fe-gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fe-leg{margin:44px 0 18px;padding:16px 18px 14px;border-radius:14px;background:var(--fe-board);color:var(--fe-board-ink);font-family:var(--mono)}
+.fe-leg-top{display:flex;justify-content:space-between;gap:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#A39E94}
+.fe-leg-top .st{color:#FFB020}
+.fe-track{position:relative;display:flex;justify-content:space-between;margin-top:16px;padding-top:22px}
+.fe-track::before{content:"";position:absolute;left:6px;right:6px;top:6px;border-top:2px dashed #4a4640}
+.fe-track .fill{position:absolute;left:6px;top:5px;height:4px;width:calc((100% - 12px) * var(--p));background:var(--red,#D7261E);border-radius:2px}
+.fe-track .pl{position:absolute;top:-17px;left:calc(6px + (100% - 12px) * var(--p));transform:translateX(-50%);font-size:1.5rem;line-height:1;color:#F1EDE4}
+.fe-track b{position:relative;font-family:var(--display);font-weight:900;font-size:1.35rem;letter-spacing:-.02em;color:#6f6a62}
+.fe-track b::before{content:"";position:absolute;top:-21px;left:0;width:12px;height:12px;border-radius:50%;background:#2a2724;border:2px solid #4a4640}
+.fe-track b:nth-of-type(2){text-align:center}.fe-track b:nth-of-type(2)::before{left:50%;transform:translateX(-50%)}
+.fe-track b:last-of-type{text-align:right}.fe-track b:last-of-type::before{left:auto;right:0}
+.fe-track b.on{color:var(--fe-board-ink)}.fe-track b.on::before{background:var(--red,#D7261E);border-color:var(--red,#D7261E)}
+.fe-track b small{display:block;font-family:var(--mono);font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#A39E94}
+.fe-leg + h2{margin-top:6px}
 .fe-board{background:var(--fe-board);color:var(--fe-board-ink);border-radius:12px;padding:6px 16px;margin:12px 0 22px;font-family:var(--mono)}
 .fe-board div{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid #36332E}
 .fe-board div:last-child{border-bottom:0}
@@ -530,13 +544,42 @@ footer a{color:inherit}
     <div class="fe-route"><div><b>CMB</b><span>Colombo</span></div><i aria-hidden="true">✈</i><div class="m"><b>MEL</b><span>Transit</span></div><i aria-hidden="true">✈</i><div class="r"><b>LAX</b><span>Los Angeles</span></div></div>
     <div class="fe-fields"><div><small>Passengers</small>Elina Gunawardena · Ayen Agany</div><div><small>Destination</small>Victoria’s Secret runway</div><div><small>Date</small>18 Oct 2026</div><div><small>Segments</small>2</div></div>
   </div>
-  <div class="label red fe-kicker">Fashion · Colombo to L.A.</div>
+  <div class="label red fe-kicker">Fashion · CMB → MEL → LAX</div>
   <h1>Elina Gunawardena walks the Victoria’s Secret runway</h1>
   <p class="dek">Signed by a Sri Lankan agency at 14, she has walked in Paris and covered Vogue Netherlands. On Sunday in Los Angeles she walked the Victoria’s Secret Fashion Show, and Sri Lanka is calling her the first of its models to do it.</p>
   <div class="byline"><span class="label">The Dosage</span><span class="label">21 October 2026</span></div>
   <figure class="fe-window"><img src="posts/img/news/elina/elina-vs-2026.jpg" alt="Elina Gunawardena smiles as she walks the runway in a green layered silk top and shorts at the Victoria’s Secret Fashion Show 2026" width="1667" height="2500"><figcaption>Elina Gunawardena in the Vintage Victoria segment, Los Angeles, 18 October 2026. Photo: Courtesy of Victoria’s Secret</figcaption></figure>
   <p class="fe-lede">Some careers announce themselves slowly. Elina Gunawardena’s began in a Colombo agency at fourteen, because her older sisters had signed there first. Five years later, on Sunday 18 October, she walked the Victoria’s Secret Fashion Show in Los Angeles, a show streamed free to the world on YouTube.</p>
   <p>Sri Lankan media, including the <i>Daily News</i> and Newswire, are celebrating her as the first Sri Lankan model to walk the Victoria’s Secret runway. Victoria’s Secret’s own press gallery and run of show confirm her place in it. She walked twice.</p>
+  <div class="fe-leg" role="note" aria-label="Leg 1/3 · Departure"><div class="fe-leg-top"><span>Leg 1/3 · Departure</span><span class="st">Boarding</span></div><div class="fe-track" style="--p:0"><span class="fill"></span><span class="pl" aria-hidden="true">✈</span><b class="on">CMB<small>Colombo</small></b><b>MEL<small>Melbourne</small></b><b>LAX<small>Los Angeles</small></b></div></div>
+  <h2>Check-in: a start at home</h2>
+  <p>Her path began with Panthera Management in Sri Lanka, she told India’s <i>t2</i> in April. Her sisters had joined the agency first, and Elina followed. Ford Models Paris soon took notice, and her first major shoot was a cover for <i>Vogue Netherlands</i>.</p>
+  <p>Through it all, she said, her mother came to her shoots and travelled with her to Paris, and she credits her agents in Sri Lanka, Paris and London, her sisters and above all her mother for guiding her.</p>
+  <h2>Passport stamps: her runway so far</h2>
+  <div class="fe-stamps" aria-label="Fashion houses she has walked for">
+    <span class="c">Hermès<small>Paris</small></span><span class="r">Fendi<small>Milan</small></span><span class="a">Givenchy<small>Paris</small></span><span class="c">McQueen<small>Paris</small></span><span class="vs">Victoria’s Secret<small>Los Angeles · 18 Oct 2026</small></span>
+  </div>
+  <p>She has walked for houses including Hermès, Fendi, Emporio Armani and Max Mara. Her models.com profile lists more than 50 runway shows, among them the spring/summer 2027 collections of Givenchy, Dolce &amp; Gabbana, Alexander McQueen and Simone Rocha. She is represented by The Lions in New York, Ford Models in Paris and Storm in London.</p>
+  <p>She has said she is proud to represent Sri Lanka. On Sunday she did it on one of fashion’s most watched stages, and she earned her place there the way every model does: show by show, client by client.</p>
+  <div class="fe-leg" role="note" aria-label="Leg 2/3 · Transit"><div class="fe-leg-top"><span>Leg 2/3 · Transit</span><span class="st">In transit</span></div><div class="fe-track" style="--p:.5"><span class="fill"></span><span class="pl" aria-hidden="true">✈</span><b class="on">CMB<small>Colombo</small></b><b class="on">MEL<small>Melbourne</small></b><b>LAX<small>Los Angeles</small></b></div></div>
+  <h2>Transit: Melbourne</h2>
+  <p>One of the faces beside her came from Melbourne. Ayen Agany, an Australian-South Sudanese model scouted in Melbourne at 16, made her Victoria’s Secret debut on the same night. The official run of show puts her in the same two segments as Elina, Vintage Victoria and Autumn Changes. Before Los Angeles she had walked for Chanel and Rhode.</p>
+  <div class="fe-gal two"><figure><img src="posts/img/news/elina/elina-vs-2026.jpg" alt="Elina Gunawardena in Vintage Victoria" loading="lazy"><figcaption><b>Elina Gunawardena</b>Departure CMB · Colombo</figcaption></figure><figure><img src="posts/img/news/elina/vs-ayen-agany.jpg" alt="Ayen Agany in Vintage Victoria" loading="lazy"><figcaption><b>Ayen Agany</b>Transit MEL · Scouted in Melbourne</figcaption></figure></div>
+  <p class="fe-credit">Photos: Courtesy of Victoria’s Secret</p>
+  <p>One career began in a Colombo agency, the other with a scout in Melbourne. On Sunday they met on the same runway, twice.</p>
+  <h2>Fellow passengers: South Asian talent on the runway</h2>
+  <p>Elina was not the only model of South Asian heritage in the line-up. Each of them earned the booking on her own record.</p>
+  <div class="fe-board" role="table" aria-label="Models of South Asian heritage in the show">
+    <div role="row"><span role="cell">COK</span><span role="cell">Ravleen Varghese</span><span role="cell">Debut · Kerala</span></div>
+    <div role="row"><span role="cell">LHR</span><span role="cell">Neelam Gill</span><span role="cell">3rd show · England</span></div>
+    <div role="row"><span role="cell">JFK</span><span role="cell">Luna Yohannan</span><span role="cell">2nd show · New York</span></div>
+  </div>
+  <div class="fe-gal two"><figure><img src="posts/img/news/elina/vs-ravleen-verghese.jpg" alt="Ravleen Varghese on the runway in Vintage Victoria" loading="lazy"><figcaption><b>Ravleen Varghese</b>Vintage Victoria · debut</figcaption></figure><figure><img src="posts/img/news/elina/vs-neelam-gill.jpg" alt="Neelam Gill on the runway in Summer Fever" loading="lazy"><figcaption><b>Neelam Gill</b>Summer Fever</figcaption></figure></div>
+  <p class="fe-credit">Photos: Courtesy of Victoria’s Secret</p>
+  <p><b>Ravleen Varghese</b>, from Kodumon in Kerala, made her debut and walked twice, once alongside Elina in Vintage Victoria. She moved to Delhi at 18 to study design at the National Institute of Fashion Technology, and has since worked with Dior and Loewe. She once turned agencies down, she has said, because she doubted she belonged; now, in her words, modelling is “less about fitting into something and more about discovering parts of myself”.</p>
+  <p><b>Neelam Gill</b>, the British model whose parents are from Punjab, walked the show for the third year running, in the Summer Fever segment. At 18 she became the first Indian model in a Burberry campaign.</p>
+  <p><b>Luna Yohannan</b>, a New York model with Indian and Dominican heritage, returned for a second year and, like Ayen, shared both of Elina’s segments.</p>
+  <div class="fe-leg" role="note" aria-label="Leg 3/3 · Arrival"><div class="fe-leg-top"><span>Leg 3/3 · Arrival</span><span class="st">Landed</span></div><div class="fe-track" style="--p:1"><span class="fill"></span><span class="pl" aria-hidden="true">✈</span><b class="on">CMB<small>Colombo</small></b><b class="on">MEL<small>Melbourne</small></b><b class="on">LAX<small>Los Angeles</small></b></div></div>
   <h2>Her night, segment by segment</h2>
   <ol class="fe-ros" aria-label="Show segments, with Elina’s two highlighted">
     <li>Spring Awakening<em>Pastel styles</em></li>
@@ -550,16 +593,7 @@ footer a{color:inherit}
   <p class="fe-src">Segment order and descriptions from Victoria’s Secret’s official run of show and media kit.</p>
   <p>This year’s show was built as a year in seven chapters, moving from spring pastels through summer, a PINK “halftime show” and autumn into two winter segments, ending in a crystal-covered finale. Elina’s first walk came in Vintage Victoria, where the brand reissued collector’s pieces from its own archive.</p>
   <p>Each chapter had its own lead. Bella Hadid opened Spring Awakening, He Cong led Vintage Victoria, Gigi Hadid led Summer Fever, and footballer Trinity Rodman led the PINK halftime show. Vittoria Ceretti led Autumn Changes, Rosie Huntington-Whiteley led Winter Melody, and Kylie Jenner led out the Winter Reprise finale, which Adriana Lima closed.</p>
-  <h2>A start at home</h2>
-  <p>Her path began with Panthera Management in Sri Lanka, she told India’s <i>t2</i> in April. Her sisters had joined the agency first, and Elina followed. Ford Models Paris soon took notice, and her first major shoot was a cover for <i>Vogue Netherlands</i>.</p>
-  <p>Through it all, she said, her mother came to her shoots and travelled with her to Paris, and she credits her agents in Sri Lanka, Paris and London, her sisters and above all her mother for guiding her.</p>
-  <h2>Her runway so far</h2>
-  <div class="fe-stamps" aria-label="Fashion houses she has walked for">
-    <span class="c">Hermès<small>Paris</small></span><span class="r">Fendi<small>Milan</small></span><span class="a">Givenchy<small>Paris</small></span><span class="c">McQueen<small>Paris</small></span><span class="vs">Victoria’s Secret<small>Los Angeles · 18 Oct 2026</small></span>
-  </div>
-  <p>She has walked for houses including Hermès, Fendi, Emporio Armani and Max Mara. Her models.com profile lists more than 50 runway shows, among them the spring/summer 2027 collections of Givenchy, Dolce &amp; Gabbana, Alexander McQueen and Simone Rocha. She is represented by The Lions in New York, Ford Models in Paris and Storm in London.</p>
-  <p>She has said she is proud to represent Sri Lanka. On Sunday she did it on one of fashion’s most watched stages, and she earned her place there the way every model does: show by show, client by client.</p>
-  <h2>Arrivals: the same runway</h2>
+  <h2>Arrivals board: the same runway</h2>
   <div class="fe-board" role="table" aria-label="Models who walked the same show">
     <div role="row" class="hi"><span role="cell">CMB</span><span role="cell">Elina Gunawardena</span><span role="cell">Colombo</span></div>
     <div role="row"><span role="cell">MEL</span><span role="cell">Ayen Agany</span><span role="cell">Transit · Melbourne</span></div>
@@ -571,23 +605,7 @@ footer a{color:inherit}
   <h2>The headliners</h2>
   <div class="fe-gal"><figure><img src="posts/img/news/elina/vs-bella-hadid.jpg" alt="Bella Hadid on the runway in Spring Awakening" loading="lazy"><figcaption><b>Bella Hadid</b>Opened · Spring Awakening</figcaption></figure><figure><img src="posts/img/news/elina/vs-gigi-hadid.jpg" alt="Gigi Hadid on the runway in Summer Fever" loading="lazy"><figcaption><b>Gigi Hadid</b>Summer Fever</figcaption></figure><figure><img src="posts/img/news/elina/vs-adriana-lima.jpg" alt="Adriana Lima on the runway in Winter Reprise" loading="lazy"><figcaption><b>Adriana Lima</b>Closed · Winter Reprise</figcaption></figure><figure><img src="posts/img/news/elina/vs-candice-swanepoel.jpg" alt="Candice Swanepoel on the runway in Spring Awakening" loading="lazy"><figcaption><b>Candice Swanepoel</b>Spring Awakening</figcaption></figure><figure><img src="posts/img/news/elina/vs-irina-shayk.jpg" alt="Irina Shayk on the runway in Vintage Victoria" loading="lazy"><figcaption><b>Irina Shayk</b>Vintage Victoria</figcaption></figure><figure><img src="posts/img/news/elina/vs-barbara-palvin.jpg" alt="Barbara Palvin on the runway in Vintage Victoria" loading="lazy"><figcaption><b>Barbara Palvin</b>Vintage Victoria</figcaption></figure></div>
   <p class="fe-credit">Photos: Courtesy of Victoria’s Secret</p>
-  <h2>Transit: Melbourne</h2>
-  <p>One of the faces beside her came from Melbourne. Ayen Agany, an Australian-South Sudanese model scouted in Melbourne at 16, made her Victoria’s Secret debut on the same night. The official run of show puts her in the same two segments as Elina, Vintage Victoria and Autumn Changes. Before Los Angeles she had walked for Chanel and Rhode.</p>
-  <div class="fe-gal two"><figure><img src="posts/img/news/elina/elina-vs-2026.jpg" alt="Elina Gunawardena in Vintage Victoria" loading="lazy"><figcaption><b>Elina Gunawardena</b>Departure CMB · Colombo</figcaption></figure><figure><img src="posts/img/news/elina/vs-ayen-agany.jpg" alt="Ayen Agany in Vintage Victoria" loading="lazy"><figcaption><b>Ayen Agany</b>Transit MEL · Scouted in Melbourne</figcaption></figure></div>
-  <p class="fe-credit">Photos: Courtesy of Victoria’s Secret</p>
-  <p>One career began in a Colombo agency, the other with a scout in Melbourne. On Sunday they met on the same runway, twice.</p>
-  <h2>South Asian talent on the runway</h2>
-  <p>Elina was not the only model of South Asian heritage in the line-up. Each of them earned the booking on her own record.</p>
-  <div class="fe-board" role="table" aria-label="Models of South Asian heritage in the show">
-    <div role="row"><span role="cell">COK</span><span role="cell">Ravleen Varghese</span><span role="cell">Debut · Kerala</span></div>
-    <div role="row"><span role="cell">LHR</span><span role="cell">Neelam Gill</span><span role="cell">3rd show · England</span></div>
-    <div role="row"><span role="cell">JFK</span><span role="cell">Luna Yohannan</span><span role="cell">2nd show · New York</span></div>
-  </div>
-  <div class="fe-gal two"><figure><img src="posts/img/news/elina/vs-ravleen-verghese.jpg" alt="Ravleen Varghese on the runway in Vintage Victoria" loading="lazy"><figcaption><b>Ravleen Varghese</b>Vintage Victoria · debut</figcaption></figure><figure><img src="posts/img/news/elina/vs-neelam-gill.jpg" alt="Neelam Gill on the runway in Summer Fever" loading="lazy"><figcaption><b>Neelam Gill</b>Summer Fever</figcaption></figure></div>
-  <p class="fe-credit">Photos: Courtesy of Victoria’s Secret</p>
-  <p><b>Ravleen Varghese</b>, from Kodumon in Kerala, made her debut and walked twice, once alongside Elina in Vintage Victoria. She moved to Delhi at 18 to study design at the National Institute of Fashion Technology, and has since worked with Dior and Loewe. She once turned agencies down, she has said, because she doubted she belonged; now, in her words, modelling is “less about fitting into something and more about discovering parts of myself”.</p>
-  <p><b>Neelam Gill</b>, the British model whose parents are from Punjab, walked the show for the third year running, in the Summer Fever segment. At 18 she became the first Indian model in a Burberry campaign.</p>
-  <p><b>Luna Yohannan</b>, a New York model with Indian and Dominican heritage, returned for a second year and, like Ayen, shared both of Elina’s segments.</p>
+  <div class="fe-leg" role="note" aria-label="In-flight entertainment"><div class="fe-leg-top"><span>In-flight entertainment</span><span class="st">Now showing</span></div><div class="fe-track" style="--p:1"><span class="fill"></span><span class="pl" aria-hidden="true">✈</span><b class="on">CMB<small>Colombo</small></b><b class="on">MEL<small>Melbourne</small></b><b class="on">LAX<small>Los Angeles</small></b></div></div>
   <h2>The music</h2>
   <p>Four acts performed live on the runway as the models walked around them.</p>
   <div class="fe-gal two wide"><figure><img src="posts/img/news/elina/vs-music-katseye.jpg" alt="KATSEYE performing at the Victoria’s Secret Fashion Show 2026" loading="lazy"><figcaption><b>KATSEYE</b>“Pinky Up” · PINK halftime</figcaption></figure><figure><img src="posts/img/news/elina/vs-music-tate-mcrae.jpg" alt="Tate McRae performing at the Victoria’s Secret Fashion Show 2026" loading="lazy"><figcaption><b>Tate McRae</b>“Housewife”</figcaption></figure><figure><img src="posts/img/news/elina/vs-music-megan-moroney.jpg" alt="Megan Moroney performing at the Victoria’s Secret Fashion Show 2026" loading="lazy"><figcaption><b>Megan Moroney</b>Country on the runway</figcaption></figure><figure><img src="posts/img/news/elina/vs-music-megan-thee-stallion.jpg" alt="Megan Thee Stallion performing at the Victoria’s Secret Fashion Show 2026" loading="lazy"><figcaption><b>Megan Thee Stallion</b>“Her” and “Body” · finale</figcaption></figure></div>

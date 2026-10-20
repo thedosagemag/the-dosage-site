@@ -335,6 +335,20 @@ footer a{color:inherit}
 .fe-gal figcaption b{display:block;font-family:var(--display);font-size:.9rem;letter-spacing:0;font-weight:800}
 .fe-credit{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin:0 0 22px}
 @media (max-width:560px){.fe-gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fe-leg{margin:44px 0 18px;padding:16px 18px 14px;border-radius:14px;background:var(--fe-board);color:var(--fe-board-ink);font-family:var(--mono)}
+.fe-leg-top{display:flex;justify-content:space-between;gap:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#A39E94}
+.fe-leg-top .st{color:#FFB020}
+.fe-track{position:relative;display:flex;justify-content:space-between;margin-top:16px;padding-top:22px}
+.fe-track::before{content:"";position:absolute;left:6px;right:6px;top:6px;border-top:2px dashed #4a4640}
+.fe-track .fill{position:absolute;left:6px;top:5px;height:4px;width:calc((100% - 12px) * var(--p));background:var(--red,#D7261E);border-radius:2px}
+.fe-track .pl{position:absolute;top:-17px;left:calc(6px + (100% - 12px) * var(--p));transform:translateX(-50%);font-size:1.5rem;line-height:1;color:#F1EDE4}
+.fe-track b{position:relative;font-family:var(--display);font-weight:900;font-size:1.35rem;letter-spacing:-.02em;color:#6f6a62}
+.fe-track b::before{content:"";position:absolute;top:-21px;left:0;width:12px;height:12px;border-radius:50%;background:#2a2724;border:2px solid #4a4640}
+.fe-track b:nth-of-type(2){text-align:center}.fe-track b:nth-of-type(2)::before{left:50%;transform:translateX(-50%)}
+.fe-track b:last-of-type{text-align:right}.fe-track b:last-of-type::before{left:auto;right:0}
+.fe-track b.on{color:var(--fe-board-ink)}.fe-track b.on::before{background:var(--red,#D7261E);border-color:var(--red,#D7261E)}
+.fe-track b small{display:block;font-family:var(--mono);font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#A39E94}
+.fe-leg + h2{margin-top:6px}
 .fe-board{background:var(--fe-board);color:var(--fe-board-ink);border-radius:12px;padding:6px 16px;margin:12px 0 22px;font-family:var(--mono)}
 .fe-board div{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid #36332E}
 .fe-board div:last-child{border-bottom:0}
