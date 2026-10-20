@@ -16,6 +16,18 @@ IMG={'post-arrivals-oct':'posts/img/news/arrivals-oct/top10.jpg','post-fuel':'po
  'post-rba':'posts/img/news/n3-rba.jpg','post-budget27':'posts/img/news/n4-budget.jpg','post-tourism':'posts/img/news/n5-tourism.jpg',
  'post-lightning':'posts/img/news/n6-lightning.jpg','post-healthhub':'posts/img/news/n7-health-hub.jpg','post-twoprices':'posts/img/news/n9-two-prices.jpg','post-holidays':'posts/img/news/n10-holidays.jpg','post-transport':'posts/img/news/n12-transport.jpg','post-elina':'posts/img/news/n17-elina.jpg','post-cpr':'posts/img/news/n13-cpr.jpg','post-mfw':'posts/img/news/n16-mfw.jpg','post-rch':'posts/img/news/n15-rch.jpg','post-retina':'posts/img/news/roadster/tesla-roadster-liftoff.jpg','post-asthma':'posts/img/news/n8-thunderstorm-asthma.jpg','post-dengue':'posts/img/news/n11-dengue.jpg','post-phi':'posts/img/2026-10-13-phi.jpg',
  'post-lovebar':'posts/img/travels/lovebar-hero.jpg','post-jeana':'posts/img/travels/jeana-bolgoda.jpg'}
+# per-story search overrides: page title, description, extra share images and topics
+SEO={'post-elina':{
+ 'title':"Elina Gunawardena, Sri Lankan model, walks the Victoria’s Secret Fashion Show 2026",
+ 'desc':"Sri Lankan model Elina Gunawardena walked the Victoria’s Secret Fashion Show 2026 in Los Angeles. Her path from Colombo, the runway, the headliners and the music.",
+ 'img':'posts/img/news/elina/elina-share-16x9.jpg','imgw':1200,'imgh':675,
+ 'alt':"Elina Gunawardena on the Victoria’s Secret Fashion Show 2026 runway. Photo: Courtesy of Victoria’s Secret",
+ 'images':['posts/img/news/elina/elina-share-16x9.jpg','posts/img/news/elina/elina-share-4x3.jpg','posts/img/news/elina/elina-share-1x1.jpg','posts/img/news/elina/elina-vs-2026.jpg'],
+ 'section':'Fashion',
+ 'tags':['Elina Gunawardena','Victoria’s Secret Fashion Show 2026','Sri Lankan model','Ayen Agany','Ravleen Varghese','Neelam Gill','Bella Hadid','Kylie Jenner','KATSEYE','Tate McRae','Megan Thee Stallion','Megan Moroney'],
+ 'about':['Elina Gunawardena'],
+ 'mentions':['Ayen Agany','Ravleen Varghese','Neelam Gill','Luna Yohannan','Bella Hadid','Gigi Hadid','Adriana Lima','Kylie Jenner','Candice Swanepoel','Irina Shayk','Barbara Palvin','KATSEYE','Tate McRae','Megan Moroney','Megan Thee Stallion'],
+ 'modified':'2026-10-21T07:30:00+11:00'}}
 DEFAULT_IMG='the-dosage-logo-square.png'
 # story pages: one short Press Council line; the full notice and badges stay on the homepage
 APC_SHORT='<span class="label" style="flex-basis:100%">Bound by the Australian Press Council’s Standards of Practice · <a href="#standards">Complaints</a></span>'
@@ -75,6 +87,13 @@ def ld_article(pid,title,desc,url,img,body):
        "author":({"@type":"Person","name":author} if author else {"@type":"Organization","name":"The Dosage","url":SITE}),
        "publisher":{"@type":"NewsMediaOrganization","name":"The Dosage","url":SITE,"logo":{"@type":"ImageObject","url":SITE+DEFAULT_IMG}}}
     if d: o["datePublished"]=d.isoformat()+"T07:00:00+11:00"
+    sx=SEO.get(pid)
+    if sx:
+        o["image"]=[SITE+i for i in sx['images']]
+        o["articleSection"]=sx['section']; o["keywords"]=sx['tags']; o["inLanguage"]="en-AU"; o["isAccessibleForFree"]=True
+        o["about"]=[{"@type":"Person","name":n} for n in sx['about']]
+        o["mentions"]=[{"@type":"Person","name":n} for n in sx['mentions']]
+        if sx.get('modified'): o["dateModified"]=sx['modified']
     return '<script type="application/ld+json">'+json.dumps(o,ensure_ascii=False)+'</script>\n'
 # stories
 urls=[SITE]
@@ -85,19 +104,26 @@ for m in re.finditer(r'<article class="page article[^"]*" data-page="(post-[a-z0
     t=re.search(r'<h1[^>]*>(.*?)</h1>',body,re.S); title=html.unescape(re.sub('<[^>]+>','',t.group(1))).strip() if t else 'The Dosage'
     d=re.search(r'<p class="dek">(.*?)</p>',body,re.S); desc=html.unescape(re.sub('<[^>]+>','',d.group(1))).strip() if d else ''
     url=f'{SITE}stories/{slug}/'
-    page_src=src.replace('<title>The Dosage</title>',f'<title>{html.escape(title)} | The Dosage</title>',1)
+    sx=SEO.get(pid,{}); ptitle=sx.get('title',title); desc=sx.get('desc',desc)
+    page_src=src.replace('<title>The Dosage</title>',f'<title>{html.escape(ptitle)} | The Dosage</title>',1)
     page_src=re.sub(r'<!--APC-FULL-->.*?<!--/APC-FULL-->',APC_SHORT,page_src,count=1,flags=re.S)
     page_src=only_page(page_src,pid)
     page_src=page_src.replace(f'data-page="{pid}" hidden>',f'data-page="{pid}">',1)
     ai=page_src.index(f'data-page="{pid}"'); ce=page_src.index('</article>',ai)
     page_src=page_src[:ce]+more_stories(pid)+page_src[ce:]
     fi=re.search(r'<img[^>]+src="(posts/[^"]+)"',body); simg=IMG.get(pid) or (fi.group(1) if fi else None)
-    meta='<base href="/">\n'+ogmeta(title,desc,url,simg or DEFAULT_IMG)
+    meta='<base href="/">\n'+ogmeta(ptitle,desc,url,sx.get('img') or simg or DEFAULT_IMG)
+    meta+='<meta name="robots" content="max-image-preview:large">\n'
+    if sx:
+        e=lambda v: html.escape(v,quote=True)
+        meta+=f'<meta property="og:image:width" content="{sx["imgw"]}">\n<meta property="og:image:height" content="{sx["imgh"]}">\n<meta property="og:image:alt" content="{e(sx["alt"])}">\n<meta name="twitter:image:alt" content="{e(sx["alt"])}">\n'
+        meta+=f'<meta property="article:section" content="{e(sx["section"])}">\n'+''.join(f'<meta property="article:tag" content="{e(t)}">\n' for t in sx['tags'])
+        if sx.get('modified'): meta+=f'<meta property="article:modified_time" content="{sx["modified"]}">\n'
     if pid in pubdate: meta+=f'<meta property="article:published_time" content="{pubdate[pid].isoformat()}T07:00:00+11:00">\n'
-    extra=f'<script>window.DOSAGE_PAGE="{pid}";</script>\n'+ld_article(pid,title,desc,url,simg,body)
+    extra=f'<script>window.DOSAGE_PAGE="{pid}";</script>\n'+ld_article(pid,ptitle,desc,url,sx.get('img') or simg,body)
     out=os.path.join(ROOT,'stories',slug); os.makedirs(out,exist_ok=True)
     open(os.path.join(out,'index.html'),'w',encoding='utf-8').write(wrap(page_src,meta,extra))
-    urls.append(url); fi=re.search(r'<img[^>]+src="(posts/[^"]+)"',body); meta_by_url[url]=(pid,title,IMG.get(pid) or (fi.group(1) if fi else None))
+    urls.append(url); fi=re.search(r'<img[^>]+src="(posts/[^"]+)"',body); meta_by_url[url]=(pid,ptitle,IMG.get(pid) or (fi.group(1) if fi else None))
 
 # standalone info pages (About, Editorial standards, Privacy, Careers)
 static_urls=[]
