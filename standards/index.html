@@ -326,6 +326,15 @@ footer a{color:inherit}
 .fe-stamps small{display:block;font-family:var(--mono);font-weight:500;font-size:.6rem;letter-spacing:.2em;margin-top:5px}
 .fe-stamps .c{border-radius:999px;color:var(--ink)}.fe-stamps .r{color:var(--red-text)}.fe-stamps .a{color:var(--fe-amber)}
 .fe-stamps .vs{background:var(--red);border-color:var(--red);color:#fff}
+.fe-gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 8px}
+.fe-gal.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fe-gal figure{margin:0}
+.fe-gal img{display:block;width:100%;aspect-ratio:2/3;object-fit:contain;background:#121110;border-radius:8px}
+.fe-gal.wide img{aspect-ratio:3/2}
+.fe-gal figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;margin-top:6px;line-height:1.4}
+.fe-gal figcaption b{display:block;font-family:var(--display);font-size:.9rem;letter-spacing:0;font-weight:800}
+.fe-credit{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin:0 0 22px}
+@media (max-width:560px){.fe-gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .fe-board{background:var(--fe-board);color:var(--fe-board-ink);border-radius:12px;padding:6px 16px;margin:12px 0 22px;font-family:var(--mono)}
 .fe-board div{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid #36332E}
 .fe-board div:last-child{border-bottom:0}
