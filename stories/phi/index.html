@@ -298,6 +298,7 @@ footer a{color:inherit}
 
 .pic{margin:28px 0}
 .pic img{width:100%;height:auto;display:block;background:var(--card)}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;margin:18px 0 8px;background:#000}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .pic figcaption{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);margin-top:8px}
 .pic.duo{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pic.duo figcaption{grid-column:1/-1}
@@ -491,6 +492,8 @@ footer a{color:inherit}
 
 
 
+
+
 <article class="page article" data-page="post-phi">
   <a class="back" href="#stories">← Stories</a>
   <h1>The rebate cut that could push 78,000 older Australians out of private cover</h1>
@@ -511,7 +514,7 @@ footer a{color:inherit}
   <p>Nothing changes today. If your parents rely on private cover, it’s worth knowing what they pay and what the rebate is worth to them, so the family isn’t caught out if the bill passes.</p>
   <p class="archive" style="margin:22px 0;padding:14px 18px;border-left:4px solid var(--red);background:var(--card)"><b>Update, 14 October:</b> the Senate has pulled this bill off its agenda. The government says it will bring it back. <a href="#post-phi-blocked">Read the latest →</a></p>
   <p class="note">Source: <a href="https://abc.net.au/news/2026-10-12/private-health-insurance-changes-older-australians-dump-cover/107255436" target="_blank" rel="noopener">ABC News</a>, Stephanie Dalzell, 12 October 2026. This is general information, not financial advice.</p>
-<aside class="more-stories" aria-label="More stories"><h2>More from The Dosage</h2><ul><li><a href="stories/arrivals-oct/"><span class="label red">Lifestyle</span> Australia is Sri Lanka’s fourth-biggest source of visitors so far this October</a></li><li><a href="stories/fuel/"><span class="label red">Explained</span> The price of a full tank</a></li><li><a href="stories/retina/"><span class="label red">Explained</span> Elon Musk joked his new car could detach your retina. Could it?</a></li><li><a href="stories/transport/"><span class="label red">Melbourne</span> Half-price trains, trams and buses: what you’ll pay, and how to tap with your bank card</a></li></ul><p><a href="#stories">All stories →</a></p></aside></article>
+<aside class="more-stories" aria-label="More stories"><h2>More from The Dosage</h2><ul><li><a href="stories/elina/"><span class="label red">Fashion</span> Elina Gunawardena walks the Victoria’s Secret runway</a></li><li><a href="stories/arrivals-oct/"><span class="label red">Lifestyle</span> Australia is Sri Lanka’s fourth-biggest source of visitors so far this October</a></li><li><a href="stories/fuel/"><span class="label red">Explained</span> The price of a full tank</a></li><li><a href="stories/retina/"><span class="label red">Explained</span> Elon Musk joked his new car could detach your retina. Could it?</a></li></ul><p><a href="#stories">All stories →</a></p></aside></article>
 
 
 
@@ -570,6 +573,7 @@ footer a{color:inherit}
 <script>
 (function(){
   var posts=[
+    {id:'post-elina',cat:'Fashion',date:'21 Oct 2026',title:'Elina Gunawardena walks the Victoria’s Secret runway',dek:'Scouted in Sri Lanka at 14, celebrated at home as the first Sri Lankan on the Victoria’s Secret runway.'},
     {id:'post-arrivals-oct',cat:'Lifestyle',date:'18 Oct 2026',title:'Australia is Sri Lanka’s fourth-biggest source of visitors so far this October',dek:'New official figures show 77,868 tourists arrived in the first half of the month. India is far ahead, and Australia sits in fourth place.'},
     {id:'post-fuel',cat:'Explained',date:'17 Oct 2026',title:'The price of a full tank',dek:'A war in the Gulf, damaged refineries in Russia and a tax that came back. How fuel got this expensive, and what you can do.'},
     {id:'post-retina',cat:'Explained',date:'16 Oct 2026',title:'Elon Musk joked his new car could detach your retina. Could it?',dek:'Tesla says its flying Roadster will only get quicker, up to the limit of the human body. We checked the eye science.'},

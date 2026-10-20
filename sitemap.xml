@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://thedosagemag.com/</loc><lastmod>2026-10-18</lastmod><image:image><image:loc>https://thedosagemag.com/the-dosage-logo-square.png</image:loc></image:image></url>
+  <url><loc>https://thedosagemag.com/</loc><lastmod>2026-10-21</lastmod><image:image><image:loc>https://thedosagemag.com/the-dosage-logo-square.png</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/lovebar/</loc><lastmod>2020-06-09</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/travels/lovebar-hero.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/jeana/</loc><lastmod>2020-08-05</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/travels/jeana-bolgoda.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/phi-blocked/</loc><lastmod>2026-10-14</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/n1-phi-blocked.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/rba/</loc><lastmod>2026-10-14</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/n3-rba.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/slprices/</loc><lastmod>2026-10-14</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/n2-sl-prices.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/budget27/</loc><lastmod>2026-10-14</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/n4-budget.jpg</image:loc></image:image></url>
+  <url><loc>https://thedosagemag.com/stories/elina/</loc><lastmod>2026-10-21</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/n17-elina.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/arrivals-oct/</loc><lastmod>2026-10-18</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/arrivals-oct/top10.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/tourism/</loc><lastmod>2026-10-14</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/n5-tourism.jpg</image:loc></image:image></url>
   <url><loc>https://thedosagemag.com/stories/fuel/</loc><lastmod>2026-10-17</lastmod><image:image><image:loc>https://thedosagemag.com/posts/img/news/fuel/hero.jpg</image:loc></image:image></url>
@@ -30,8 +31,8 @@
   <url><loc>https://thedosagemag.com/stories/gap/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://thedosagemag.com/stories/default/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://thedosagemag.com/stories/ride/</loc></url>
-  <url><loc>https://thedosagemag.com/about/</loc><lastmod>2026-10-18</lastmod></url>
-  <url><loc>https://thedosagemag.com/standards/</loc><lastmod>2026-10-18</lastmod></url>
-  <url><loc>https://thedosagemag.com/privacy/</loc><lastmod>2026-10-18</lastmod></url>
-  <url><loc>https://thedosagemag.com/careers/</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://thedosagemag.com/about/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://thedosagemag.com/standards/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://thedosagemag.com/privacy/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://thedosagemag.com/careers/</loc><lastmod>2026-10-20</lastmod></url>
 </urlset>
