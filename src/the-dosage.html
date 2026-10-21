@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>(function(){try{var q=/[?&]halloween=(1|0)/.exec(location.search);var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Australia/Melbourne'}));var m=d.getMonth(),day=d.getDate();var on=(m===9&&day>=24)||(m===10&&day<=1);if(q)on=q[1]==='1';if(on)document.documentElement.classList.add('halloween')}catch(e){}})();</script>
 <style>
 /* Layout: a newsweekly website — red masthead band, a front page of stories, full articles, and Edition 01 as its own section. */
 :root{
@@ -45,6 +46,21 @@ h1,h2,h3{text-wrap:balance;margin:0}
 /* top bar */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:calc(-1*clamp(16px,4vw,48px));padding:12px clamp(16px,4vw,48px)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap}
+/* Halloween doodle on the wordmark: shown 24 Oct to 1 Nov (Melbourne), or with ?halloween=1 */
+.hw{display:none}
+html.halloween .mark{position:relative}
+html.halloween .hw{display:block;position:absolute;inset:0;pointer-events:none}
+.hw-pumpkin{position:absolute;right:-22px;top:-9px;width:22px;height:22px;transform-origin:50% 100%;animation:hw-wobble 4s ease-in-out infinite}
+.hw-pumpkin .glow{animation:hw-flicker 2.2s steps(1) infinite}
+.hw-thread{position:absolute;left:66%;top:62%;width:1px;height:0;background:currentColor;opacity:.55;transform-origin:top;animation:hw-drop 6s ease-in-out infinite}
+.hw-spider{position:absolute;left:calc(66% - 7px);top:62%;width:15px;height:15px;animation:hw-spider 6s ease-in-out infinite}
+.hw-spider svg{display:block;width:100%;height:100%;animation:hw-sway 1.6s ease-in-out infinite;transform-origin:50% 0}
+@keyframes hw-drop{0%,12%{height:0}38%,70%{height:14px}88%,100%{height:0}}
+@keyframes hw-spider{0%,12%{transform:translateY(-4px);opacity:0}16%{opacity:1}38%,70%{transform:translateY(12px);opacity:1}84%{opacity:1}88%,100%{transform:translateY(-4px);opacity:0}}
+@keyframes hw-sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+@keyframes hw-wobble{0%,100%{transform:rotate(0)}45%{transform:rotate(0)}50%{transform:rotate(-9deg)}55%{transform:rotate(7deg)}60%{transform:rotate(0)}}
+@keyframes hw-flicker{0%,100%{opacity:1}40%{opacity:.55}43%{opacity:1}71%{opacity:.7}74%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hw *{animation:none!important}.hw-thread{height:20px}.hw-spider{transform:translateY(18px)}}
 .mark{display:flex;align-items:baseline;gap:8px;text-decoration:none}
 .mark .the{font-family:var(--mono);font-weight:700;font-size:.7rem;letter-spacing:.35em}
 .mark .word{font-family:var(--display);font-weight:900;font-size:1.6rem;line-height:1;letter-spacing:-.03em}
@@ -472,7 +488,7 @@ footer a{color:inherit}
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#home" aria-label="The Dosage home"><span class="the">THE</span><span class="word">DOSAGE</span></a>
+    <a class="mark" href="#home" aria-label="The Dosage home"><span class="the">THE</span><span class="word">DOSAGE</span><span class="hw" aria-hidden="true"><svg class="hw-pumpkin" viewBox="0 0 24 24"><path d="M12 5.5c0-1.6.8-2.8 2.4-3.4" stroke="#3E5B2A" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="7.5" cy="14" rx="5.5" ry="7" fill="#E8701A"/><ellipse cx="16.5" cy="14" rx="5.5" ry="7" fill="#E8701A"/><ellipse cx="12" cy="14" rx="5" ry="7.6" fill="#F2842A"/><g class="glow" fill="#FFD25A"><path d="M7 11.5l2.2-1.6.6 2.4z"/><path d="M17 11.5l-2.2-1.6-.6 2.4z"/><path d="M7.5 16c1.4 1.6 7.6 1.6 9 0-.8 2.6-8.2 2.6-9 0z"/></g></svg><span class="hw-thread"></span><span class="hw-spider"><svg viewBox="0 0 16 16"><g stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"><path d="M6 8L2 5M6 9.5L1.5 9.5M6 11L2.5 14M10 8L14 5M10 9.5h4.5M10 11l3.5 3"/></g><ellipse cx="8" cy="10" rx="3" ry="3.4" fill="currentColor"/><circle cx="8" cy="5.8" r="2" fill="currentColor"/><circle cx="7.2" cy="5.6" r=".55" fill="#E3342A"/><circle cx="8.8" cy="5.6" r=".55" fill="#E3342A"/></svg></span></span></a>
     <nav class="nav" aria-label="Main">
       <a href="#home" data-nav="home">Home</a>
       <a href="#stories" data-nav="stories">Stories</a>
