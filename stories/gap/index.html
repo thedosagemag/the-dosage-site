@@ -511,6 +511,14 @@ footer a{color:inherit}
 .more-stories li{padding:10px 0;border-bottom:1px solid var(--rule,#D9D3C7)}
 .more-stories li a{text-decoration:none;color:inherit;font-weight:600}
 .more-stories li .label{margin-right:6px}
+
+/* dengue vaccine story */
+.ig img{display:block;width:100%;max-width:640px;margin:0 auto;height:auto;border:1px solid rgba(21,20,18,.15)}
+.article .side{margin:26px 0;background:#1C1A17;color:#F1EDE4;border-radius:4px;padding:18px 18px 8px;font-family:Archivo,Arial,sans-serif}
+.article .side h3{font-family:monospace;font-size:12px;letter-spacing:.16em;color:#F0544A;margin:0 0 10px;font-weight:400}
+.article .side ul{margin:0;padding-left:16px;font-size:14px;line-height:1.45;columns:2;column-gap:28px}.article .side li{break-inside:avoid}.article .side li{margin:0 0 9px}.article .side .s{font-size:11px;color:#cfc8bb;margin:6px 0 10px}
+[data-page=post-dengue-vaccine] .numbers{grid-template-columns:repeat(3,1fr)}
+@media(max-width:700px){.article .side ul{columns:1}[data-page=post-dengue-vaccine] .numbers{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -631,6 +639,7 @@ footer a{color:inherit}
 
 
 
+
 <article class="page article" data-page="post-gap">
   <a class="back" href="#stories">← Stories</a>
   <h1>Sri Lanka's recovery, in four numbers</h1>
@@ -647,7 +656,7 @@ footer a{color:inherit}
   <p>Growth measures the size of the whole economy. It can rise while wages, measured against prices, stay below where they were. Prices are also moving again: headline inflation reached 8% in August, even though the Bank expects it to average 5.7% for the year.</p>
   <blockquote>The country is recovering faster than the people inside it.</blockquote>
   <p class="note">Source: World Bank, Sri Lanka Development Update (October 2026), as reported by the <a href="https://www.ft.lk/top-story/World-Bank-lifts-Sri-Lanka-outlook-says-recovery-uneven/26-798345" target="_blank" rel="noopener">Daily FT</a>.</p>
-<aside class="more-stories" aria-label="More stories"><h2>More from The Dosage</h2><ul><li><a href="stories/rch/"><span class="label red">Health</span> A bigger emergency department opens at the Royal Children’s in December</a></li><li><a href="stories/mfw/"><span class="label red">Lifestyle</span> Melbourne Fashion Week takes over City Square this Saturday, and it’s free to stand and watch</a></li><li><a href="stories/cpr/"><span class="label red">Health</span> Three steps that could save a life this Shocktober</a></li><li><a href="stories/elina/"><span class="label red">Fashion</span> Elina Gunawardena walks the Victoria’s Secret runway</a></li></ul><p><a href="#stories">All stories →</a></p></aside></article>
+<aside class="more-stories" aria-label="More stories"><h2>More from The Dosage</h2><ul><li><a href="stories/dengue-vaccine/"><span class="label red">Health</span> Going home to Sri Lanka? What to know about dengue and the new vaccine</a></li><li><a href="stories/rch/"><span class="label red">Health</span> A bigger emergency department opens at the Royal Children’s in December</a></li><li><a href="stories/mfw/"><span class="label red">Lifestyle</span> Melbourne Fashion Week takes over City Square this Saturday, and it’s free to stand and watch</a></li><li><a href="stories/cpr/"><span class="label red">Health</span> Three steps that could save a life this Shocktober</a></li></ul><p><a href="#stories">All stories →</a></p></aside></article>
 
 
 
@@ -687,6 +696,7 @@ footer a{color:inherit}
 <script>
 (function(){
   var posts=[
+    {id:'post-dengue-vaccine',cat:'Health',date:'21 Oct 2026',title:'Going home to Sri Lanka? What to know about dengue and the new vaccine',dek:'Sri Lanka has passed 100,000 dengue cases this year. For the first time, people in Australia can be vaccinated before they fly. Who it’s for, and how to plan around it.'},
     {id:'post-rch',cat:'Health',date:'21 Oct 2026',title:'A bigger emergency department opens at the Royal Children’s in December',dek:'Twenty more treatment spaces should let the hospital see about 13,000 more children a year. And where to go when it isn’t an emergency.'},
     {id:'post-mfw',cat:'Lifestyle',date:'21 Oct 2026',title:'Melbourne Fashion Week takes over City Square this Saturday, and it’s free to stand and watch',dek:'Two outdoor runways on Saturday 24 October, a ticketed closing show on Sunday, and more than 100 events this week.'},
     {id:'post-cpr',cat:'Health',date:'21 Oct 2026',title:'Three steps that could save a life this Shocktober',dek:'Only one in 10 Victorians survives a cardiac arrest. Three steps, and free guides in 16 languages including Tamil.'},
