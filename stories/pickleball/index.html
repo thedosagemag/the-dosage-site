@@ -72,21 +72,33 @@ h1,h2,h3{text-wrap:balance;margin:0}
 /* top bar */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:calc(-1*clamp(16px,4vw,48px));padding:12px clamp(16px,4vw,48px)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap}
-/* Halloween doodle on the wordmark: shown 24 Oct to 1 Nov (Melbourne), or with ?halloween=1 */
-.hw{display:none}
+/* Halloween: "The Dosage Opera Ghost" peeks from behind the O, 24 Oct to 1 Nov (Melbourne), or ?halloween=1 */
+.og-wrap{display:none}
 html.halloween .mark{position:relative}
-html.halloween .hw{display:block;position:absolute;inset:0;pointer-events:none}
-.hw-pumpkin{position:absolute;right:-22px;top:-9px;width:22px;height:22px;transform-origin:50% 100%;animation:hw-wobble 4s ease-in-out infinite}
-.hw-pumpkin .glow{animation:hw-flicker 2.2s steps(1) infinite}
-.hw-thread{position:absolute;left:66%;top:62%;width:1px;height:0;background:currentColor;opacity:.55;transform-origin:top;animation:hw-drop 6s ease-in-out infinite}
-.hw-spider{position:absolute;left:calc(66% - 7px);top:62%;width:15px;height:15px;animation:hw-spider 6s ease-in-out infinite}
-.hw-spider svg{display:block;width:100%;height:100%;animation:hw-sway 1.6s ease-in-out infinite;transform-origin:50% 0}
-@keyframes hw-drop{0%,12%{height:0}38%,70%{height:14px}88%,100%{height:0}}
-@keyframes hw-spider{0%,12%{transform:translateY(-4px);opacity:0}16%{opacity:1}38%,70%{transform:translateY(12px);opacity:1}84%{opacity:1}88%,100%{transform:translateY(-4px);opacity:0}}
-@keyframes hw-sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
-@keyframes hw-wobble{0%,100%{transform:rotate(0)}45%{transform:rotate(0)}50%{transform:rotate(-9deg)}55%{transform:rotate(7deg)}60%{transform:rotate(0)}}
-@keyframes hw-flicker{0%,100%{opacity:1}40%{opacity:.55}43%{opacity:1}71%{opacity:.7}74%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.hw *{animation:none!important}.hw-thread{height:20px}.hw-spider{transform:translateY(18px)}}
+html.halloween .og-wrap{display:block}
+
+html.halloween .mark .word{position:relative;z-index:0}
+.og-wrap{position:absolute;z-index:-1;left:.6em;bottom:.08em;width:1em;height:2.2em;overflow:hidden;pointer-events:none}
+.og-wrap svg{position:absolute;left:0;bottom:0;width:100%;height:1.08em;display:block;overflow:visible}
+/* behind the O: starts hidden low, peeks, rises above the word, bows, sinks back */
+.og{transform-origin:50% 100%;animation:og-show 9s ease-in-out infinite}
+@keyframes og-show{
+ 0%,8%{transform:translateY(105%)}
+ 16%,22%{transform:translateY(42%)}      /* peek: eyes in the O */
+ 32%,54%{transform:translateY(-50%)}     /* rise above the word */
+ 60%{transform:translateY(-50%) rotate(-10deg)} /* bow */
+ 66%{transform:translateY(-50%) rotate(0)}
+ 74%,100%{transform:translateY(105%)}}
+.og-hat{transform-box:fill-box;transform-origin:50% 100%;animation:og-hat 9s ease-in-out infinite}
+@keyframes og-hat{0%,58%,66%,100%{transform:none}61%,63%{transform:translate(-6px,-6px) rotate(-18deg)}}
+.og-arm{transform-box:view-box;transform-origin:90px 72px;animation:og-arm 1.8s ease-in-out infinite}
+@keyframes og-arm{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+.og-cape{transform-box:view-box;transform-origin:60px 56px;animation:og-cape 2.4s ease-in-out infinite}
+@keyframes og-cape{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.05)}}
+.og-f1,.og-f2,.og-f3{transform-box:fill-box;transform-origin:50% 100%;animation:og-flame 1.1s ease-in-out infinite}
+.og-f2{animation-duration:.9s;animation-delay:.2s}.og-f3{animation-duration:1.3s;animation-delay:.4s}
+@keyframes og-flame{0%,100%{transform:scale(1,1)}50%{transform:scale(.85,1.15)}}
+@media (prefers-reduced-motion:reduce){.og,.og *{animation:none!important}.og{transform:translateY(-50%)}}
 .mark{display:flex;align-items:baseline;gap:8px;text-decoration:none}
 .mark .the{font-family:var(--mono);font-weight:700;font-size:.7rem;letter-spacing:.35em}
 .mark .word{font-family:var(--display);font-weight:900;font-size:1.6rem;line-height:1;letter-spacing:-.03em}
@@ -516,7 +528,7 @@ footer a{color:inherit}
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#home" aria-label="The Dosage home"><span class="the">THE</span><span class="word">DOSAGE</span><span class="hw" aria-hidden="true"><svg class="hw-pumpkin" viewBox="0 0 24 24"><path d="M12 5.5c0-1.6.8-2.8 2.4-3.4" stroke="#3E5B2A" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="7.5" cy="14" rx="5.5" ry="7" fill="#E8701A"/><ellipse cx="16.5" cy="14" rx="5.5" ry="7" fill="#E8701A"/><ellipse cx="12" cy="14" rx="5" ry="7.6" fill="#F2842A"/><g class="glow" fill="#FFD25A"><path d="M7 11.5l2.2-1.6.6 2.4z"/><path d="M17 11.5l-2.2-1.6-.6 2.4z"/><path d="M7.5 16c1.4 1.6 7.6 1.6 9 0-.8 2.6-8.2 2.6-9 0z"/></g></svg><span class="hw-thread"></span><span class="hw-spider"><svg viewBox="0 0 16 16"><g stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"><path d="M6 8L2 5M6 9.5L1.5 9.5M6 11L2.5 14M10 8L14 5M10 9.5h4.5M10 11l3.5 3"/></g><ellipse cx="8" cy="10" rx="3" ry="3.4" fill="currentColor"/><circle cx="8" cy="5.8" r="2" fill="currentColor"/><circle cx="7.2" cy="5.6" r=".55" fill="#E3342A"/><circle cx="8.8" cy="5.6" r=".55" fill="#E3342A"/></svg></span></span></a>
+    <a class="mark" href="#home" aria-label="The Dosage home"><span class="the">THE</span><span class="word">DOSAGE<span class="og-wrap" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 120 130" class="og"><g class="og-cape"><path d="M30 52 C14 70 8 96 4 118 C16 112 26 116 34 110 L40 60 Z" fill="#3B1F3A"/><path d="M86 52 C102 70 108 96 114 118 C102 112 92 116 84 110 L78 60 Z" fill="#3B1F3A"/><path d="M34 58 C24 76 18 98 14 114 C22 110 30 112 36 108 Z" fill="#D7261E"/><path d="M82 58 C92 76 98 98 102 114 C94 110 86 112 80 108 Z" fill="#D7261E"/><path d="M4 118 C16 112 26 116 34 110" stroke="#E3B341" stroke-width="2" fill="none"/><path d="M114 118 C102 112 92 116 84 110" stroke="#E3B341" stroke-width="2" fill="none"/></g><path class="og-body" d="M32 60 C32 34 44 22 59 22 C74 22 86 34 86 60 L86 112 C82 112 81 106 76 106 C71 106 70 113 65 113 C60 113 59 106 54 106 C49 106 48 113 43 113 C38 113 37 106 32 108 Z" fill="#FBF8F2" stroke="#151412" stroke-width="2.4"/><path d="M30 54 L40 66 L46 54 Z" fill="#3B1F3A" stroke="#E3B341" stroke-width="1.6"/><path d="M88 54 L78 66 L72 54 Z" fill="#3B1F3A" stroke="#E3B341" stroke-width="1.6"/><path d="M42 64 Q59 72 76 64" stroke="#E3B341" stroke-width="1.8" fill="none" stroke-dasharray="2 2"/><circle cx="44" cy="64" r="3.2" fill="#E3B341" stroke="#151412" stroke-width="1"/><path d="M38 42 C44 36 54 38 59 42 C64 38 74 36 80 42 C81 48 78 54 72 54 C66 54 62 50 59 48 C56 50 52 54 46 54 C40 54 37 48 38 42 Z" fill="#D7261E" stroke="#151412" stroke-width="1.8"/><ellipse class="og-eye" cx="48" cy="46" rx="4" ry="3.2" fill="#151412"/><ellipse class="og-eye" cx="70" cy="46" rx="4" ry="3.2" fill="#151412"/><circle cx="49.2" cy="45" r="1.1" fill="#FFD25A"/><circle cx="71.2" cy="45" r="1.1" fill="#FFD25A"/><g class="og-hat"><ellipse cx="59" cy="27" rx="27" ry="5.5" fill="#3B1F3A" stroke="#151412" stroke-width="2"/><path d="M43 26 L45 4 C52 1 66 1 73 4 L75 26 Z" fill="#3B1F3A" stroke="#151412" stroke-width="2"/><path d="M44.2 19 L73.8 19 L74.4 25 L43.6 25 Z" fill="#E3B341"/></g><ellipse cx="34" cy="84" rx="6" ry="7" fill="#FBF8F2" stroke="#151412" stroke-width="2"/><g class="og-arm"><ellipse cx="90" cy="70" rx="6.5" ry="7" fill="#FBF8F2" stroke="#151412" stroke-width="2"/><path d="M92 64 L92 30" stroke="#E3B341" stroke-width="3" stroke-linecap="round"/><path d="M80 36 Q92 46 104 36" stroke="#E3B341" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M86 76 L98 76" stroke="#E3B341" stroke-width="3" stroke-linecap="round"/><rect x="77" y="24" width="6" height="12" rx="1" fill="#FBF8F2" stroke="#151412" stroke-width="1.2"/><rect x="89" y="18" width="6" height="12" rx="1" fill="#FBF8F2" stroke="#151412" stroke-width="1.2"/><rect x="101" y="24" width="6" height="12" rx="1" fill="#FBF8F2" stroke="#151412" stroke-width="1.2"/><path class="og-f1" d="M80 23 C77 19 79 15 80 12 C81 15 83 19 80 23 Z" fill="#FFD25A"/><path class="og-f2" d="M92 17 C89 13 91 9 92 6 C93 9 95 13 92 17 Z" fill="#FFD25A"/><path class="og-f3" d="M104 23 C101 19 103 15 104 12 C105 15 107 19 104 23 Z" fill="#FFD25A"/></g></svg></span></span></a>
     <nav class="nav" aria-label="Main">
       <a href="#home" data-nav="home">Home</a>
       <a href="#stories" data-nav="stories">Stories</a>
