@@ -164,7 +164,7 @@ for m in re.finditer(r'<article class="page article[^"]*" data-page="(post-[a-z0
 
 # standalone info pages (About, Editorial standards, Privacy, Careers)
 static_urls=[]
-for pid in ['about','standards','privacy','careers']:
+for pid in ['about','standards','privacy','careers','sport','sport-cricket']:
     blk=[(a,b) for a,b,i in page_spans(src) if i==pid]
     if not blk: continue
     body=src[blk[0][0]:blk[0][1]]
