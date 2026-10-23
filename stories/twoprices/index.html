@@ -147,6 +147,16 @@ section{padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--rule)}
 .article h2{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.5rem;margin:1.6em 0 .5em}
 .article blockquote{margin:1.4em 0;padding-left:20px;border-left:4px solid var(--red);font-family:var(--serif);font-size:1.7rem;line-height:1.15;border-radius:0}
 .article .note{font-size:.95rem;color:var(--muted)}
+/* Arts: theatre and gallery reviews */
+.arts-empty{grid-column:1/-1;border:1px dashed var(--ink);padding:clamp(18px,3vw,28px);display:grid;gap:8px}
+.arts-empty b{font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(1.4rem,3.5vw,2rem);line-height:1}
+.arts-empty p{margin:0;color:var(--muted)}
+.how-review{margin:26px 0 0;border-top:4px solid var(--red);padding-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px}
+.how-review div{font-size:.95rem;line-height:1.45}.how-review b{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.review-facts{margin:22px 0 26px;border:1px solid var(--ink);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.review-facts div{padding:12px 14px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:.95rem}
+.review-facts b{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.review-disclosure{font-size:.9rem;color:var(--muted);border-left:3px solid var(--ink);padding-left:12px}
 /* Sport + The Crease (cricket) */
 .subnav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 0}
 .subnav a{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);border:1px solid var(--ink);padding:7px 12px;border-radius:999px}
@@ -548,6 +558,7 @@ footer a{color:inherit}
       <a href="#home" data-nav="home">Home</a>
       <a href="#stories" data-nav="stories">Stories</a>
       <a href="#sport" data-nav="sport">Sport</a>
+      <a href="#arts" data-nav="arts">Arts</a>
       <a href="#edition" data-nav="edition">Edition 01</a>
       <a href="#original" data-nav="original">The Original</a>
       <a href="#travels" data-nav="travels">Editor’s Travels</a>
@@ -569,6 +580,15 @@ footer a{color:inherit}
 
 
 <!-- SPORT: CRICKET -->
+
+
+<!-- ARTS -->
+
+
+<!-- ARTS: THEATRE -->
+
+
+<!-- ARTS: GALLERIES -->
 
 
 <!-- EDITION -->
@@ -802,8 +822,9 @@ footer a{color:inherit}
     return a;
   }
   document.querySelectorAll('[data-list]').forEach(function(el){
-    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-fuel'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):L==='sport'?posts.filter(function(p){return p.cat==='Sport'}):L==='cricket'?posts.filter(function(p){return p.sub==='Cricket'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
+    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-fuel'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):L==='sport'?posts.filter(function(p){return p.cat==='Sport'}):L==='cricket'?posts.filter(function(p){return p.sub==='Cricket'}):L==='arts'?posts.filter(function(p){return p.cat==='Arts'}):L==='theatre'?posts.filter(function(p){return p.sub==='Theatre'}):L==='galleries'?posts.filter(function(p){return p.sub==='Gallery'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
     list.forEach(function(p){el.appendChild(L==='travels'?ftile(p):card(p))});
+    if(!list.length&&/^(arts|theatre|galleries)$/.test(L)){var em=document.createElement('div');em.className='arts-empty';em.innerHTML='<b>'+(L==='theatre'?'Our first theatre review is on its way.':L==='galleries'?'Our first exhibition review is on its way.':'Our first reviews are on their way.')+'</b><p>Want us to see your show or exhibition? Email <a href="mailto:editor@thedosagemag.com">editor@thedosagemag.com</a>.</p>';el.appendChild(em)}
   });
   var pages=document.querySelectorAll('[data-page]');
   var navs=document.querySelectorAll('[data-nav]');
@@ -819,6 +840,7 @@ footer a{color:inherit}
     var section=h.indexOf('post-')===0?'stories':h;
     if(h==='post-ride')section='original';
     if(h==='sport-cricket'||posts.some(function(p){return p.id===h&&p.cat==='Sport'}))section='sport';
+    if(h==='arts-theatre'||h==='arts-galleries'||posts.some(function(p){return p.id===h&&p.cat==='Arts'}))section='arts';
     if(h==='post-lovebar'||h==='post-jeana')section='travels';
     if(h.indexOf('orig-')===0)section='original';
     navs.forEach(function(n){if(n.dataset.nav===section)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current')});
