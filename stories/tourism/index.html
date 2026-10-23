@@ -146,6 +146,24 @@ section{padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--rule)}
 .article h2{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.5rem;margin:1.6em 0 .5em}
 .article blockquote{margin:1.4em 0;padding-left:20px;border-left:4px solid var(--red);font-family:var(--serif);font-size:1.7rem;line-height:1.15;border-radius:0}
 .article .note{font-size:.95rem;color:var(--muted)}
+/* Sport + The Crease (cricket) */
+.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 0}
+.subnav a{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);border:1px solid var(--ink);padding:7px 12px;border-radius:999px}
+.subnav a[aria-current="page"],.subnav a:hover{background:var(--ink);color:var(--paper)}
+.crease-head h1{display:flex;align-items:baseline;gap:.25em;flex-wrap:wrap}
+.crease-head h1 small{font-family:var(--mono);font-size:.8rem;font-stretch:100%;letter-spacing:.18em;color:var(--red-text)}
+.board{--bd:#1E3B2C;--bl:#F3EBD3;--bm:#B9C7A8;background:var(--bd);color:var(--bl);margin:28px 0 8px;padding:clamp(16px,3vw,28px);border:6px solid #2C5440;box-shadow:inset 0 0 0 2px #10241A}
+.board .bhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bm);border-bottom:1px dashed #3E6A52;padding-bottom:10px}
+.board .btitle{font-family:var(--display);font-weight:900;font-stretch:70%;text-transform:uppercase;font-size:clamp(1.9rem,6vw,3.4rem);line-height:.9;margin:14px 0 6px;letter-spacing:.01em}
+.board .bsub{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bm);margin:0 0 16px}
+.board ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.board li{display:grid;grid-template-columns:2.2em minmax(0,1fr) minmax(0,1fr);align-items:center;gap:10px;background:#16301F;padding:10px 12px}
+.board li b{font-family:var(--mono);color:#F2C14E;font-size:1rem}
+.board .tm{font-family:var(--display);font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:clamp(1rem,3.4vw,1.45rem);line-height:1.05}
+.board .tm em{display:block;font-style:normal;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--bm);font-weight:400}
+.board .tm.r{text-align:right}
+.board .bfoot{margin:14px 0 0;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bm)}
+@media (max-width:480px){.board li{grid-template-columns:1.6em minmax(0,1fr)}.board .tm.r{text-align:left;grid-column:2}}
 .numbers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.4em 0}
 .numbers div{background:var(--paper);padding:16px}
 .numbers b{display:block;font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
@@ -528,6 +546,7 @@ footer a{color:inherit}
     <nav class="nav" aria-label="Main">
       <a href="#home" data-nav="home">Home</a>
       <a href="#stories" data-nav="stories">Stories</a>
+      <a href="#sport" data-nav="sport">Sport</a>
       <a href="#edition" data-nav="edition">Edition 01</a>
       <a href="#original" data-nav="original">The Original</a>
       <a href="#travels" data-nav="travels">Editor’s Travels</a>
@@ -543,6 +562,12 @@ footer a{color:inherit}
 
 
 <!-- STORIES -->
+
+
+<!-- SPORT -->
+
+
+<!-- SPORT: CRICKET -->
 
 
 <!-- EDITION -->
@@ -623,7 +648,11 @@ footer a{color:inherit}
   <h2>Heading home for the holidays?</h2>
   <p>The winter season, roughly December to March, is when hotels, flights and the south coast fill up. If you are planning a December trip from Melbourne, book early.</p>
   <p class="note">Source: Sri Lanka Tourism Development Authority data, as reported by the <a href="https://www.ft.lk/business/Tourism-crosses-1-7-m-arrivals-but-remains-behind-2025-pace/34-798240" target="_blank" rel="noopener">Daily FT</a>, 6 October 2026.</p>
-<aside class="more-stories" aria-label="More stories"><h2>More from The Dosage</h2><ul><li><a href="stories/trees/"><span class="label red">Melbourne</span> 100,000 more trees for Melbourne’s hotter suburbs</a></li><li><a href="stories/protein-static/"><span class="label red">Lifestyle</span> Why your protein shake clumps, and how Melbourne science could one day fix it</a></li><li><a href="stories/smart-glasses/"><span class="label red">Melbourne</span> Smart glasses to be banned in every Victorian school from 2027</a></li><li><a href="stories/dengue-vaccine/"><span class="label red">Health</span> Going home to Sri Lanka? What to know about dengue and the new vaccine</a></li></ul><p><a href="#stories">All stories →</a></p></aside></article>
+<aside class="more-stories" aria-label="More stories"><h2>More from The Dosage</h2><ul><li><a href="stories/wbbl12/"><span class="label red">Sport</span> The WBBL comes home: season 12 opens at Junction Oval next Thursday</a></li><li><a href="stories/schutt/"><span class="label red">Sport</span> Megan Schutt suspended for two matches</a></li><li><a href="stories/trees/"><span class="label red">Melbourne</span> 100,000 more trees for Melbourne’s hotter suburbs</a></li><li><a href="stories/protein-static/"><span class="label red">Lifestyle</span> Why your protein shake clumps, and how Melbourne science could one day fix it</a></li></ul><p><a href="#stories">All stories →</a></p></aside></article>
+
+
+
+
 
 
 
@@ -701,6 +730,8 @@ footer a{color:inherit}
 <script>
 (function(){
   var posts=[
+    {id:'post-wbbl12',cat:'Sport',sub:'Cricket',date:'23 Oct 2026',title:'The WBBL comes home: season 12 opens at Junction Oval next Thursday',dek:'Renegades v Thunder, then Stars v the reigning champions Hurricanes, in a double-header under lights on 29 October.'},
+    {id:'post-schutt',cat:'Sport',sub:'Cricket',date:'23 Oct 2026',title:'Megan Schutt suspended for two matches',dek:'Cricket Australia says a single, out-of-competition breach of its prescription-medication rules was not performance-enhancing.'},
     {id:'post-trees',cat:'Melbourne',date:'23 Oct 2026',title:'100,000 more trees for Melbourne’s hotter suburbs',dek:'More than 100,000 trees will be planted in suburbs with less shade, and 10 shopping strips and streets will get a green makeover.'},
     {id:'post-protein-static',cat:'Lifestyle',date:'23 Oct 2026',title:'Why your protein shake clumps, and how Melbourne science could one day fix it',dek:'RMIT researchers have shown static charge can be turned up, flipped or switched off with an electric field. Food powders are the next test.'},
     {id:'post-smart-glasses',cat:'Melbourne',date:'21 Oct 2026',title:'Smart glasses to be banned in every Victorian school from 2027',dek:'From term 1, phones, smart glasses and other personal devices must be switched off and stored. What it means for students, parents and volunteers.'},
@@ -729,8 +760,8 @@ footer a{color:inherit}
     {id:'post-melbourne',cat:'Colombo · Melbourne',date:'12 Oct 2026',title:'Little Lanka: Sri Lankans in Melbourne, by the numbers',dek:'Half of all Sri Lanka-born Australians live in one city.'},
     {id:'post-remit',cat:'Colombo · Melbourne',date:'12 Oct 2026',title:'The money home: $8 billion and counting',dek:'Sri Lankans abroad sent home a record US$8.07 billion in 2025.'},
     {id:'post-imf',cat:'Explained',date:'12 Oct 2026',title:'The $3 billion deal, explained',dek:'What the IMF programme asked for, and what happens when it ends in March 2027.'},
-    {id:'post-cpl',cat:'Sport',date:'12 Oct 2026',title:'Sri Lanka’s first pickleball league serves on Friday',dek:'Eight franchises, a player auction and a cricketer in the owners’ box. The Ceylon Pickle League runs 16–18 October.'},
-    {id:'post-pickleball',cat:'Sport',date:'12 Oct 2026',title:'Pickleball has found Colombo',dek:'Two years after the first courts opened, the paddle sport is everywhere from Nugegoda to Negombo.'},
+    {id:'post-cpl',cat:'Sport',sub:'Pickleball',date:'12 Oct 2026',title:'Sri Lanka’s first pickleball league serves on Friday',dek:'Eight franchises, a player auction and a cricketer in the owners’ box. The Ceylon Pickle League runs 16–18 October.'},
+    {id:'post-pickleball',cat:'Sport',sub:'Pickleball',date:'12 Oct 2026',title:'Pickleball has found Colombo',dek:'Two years after the first courts opened, the paddle sport is everywhere from Nugegoda to Negombo.'},
     {id:'post-walk',cat:'Fitness',date:'12 Oct 2026',title:'The two-minute walk after dinner',dek:'A short stroll after eating blunts the blood sugar spike. No gym needed.'},
     {id:'post-cinnamon',cat:'Food',date:'12 Oct 2026',title:'The cinnamon in your kitchen probably isn’t ours',dek:'Most cinnamon sold worldwide is cassia. Ceylon cinnamon is a different spice, with a hundred times less coumarin.'},
     {id:'post-default',cat:'Explained',date:'12 Oct 2026',title:'What happens when a country can’t pay?',dek:'The dollar jar, the default, and why the fuel queues began.'},
@@ -742,7 +773,7 @@ footer a{color:inherit}
   function card(p){
     var a=document.createElement('a');a.className='card';a.href='#'+p.id;
     var m=document.createElement('div');m.className='meta';
-    var c=document.createElement('span');c.className='label red';c.textContent=p.cat;
+    var c=document.createElement('span');c.className='label red';c.textContent=p.sub?p.cat+' · '+p.sub:p.cat;
     var t=document.createElement('time');t.textContent=p.date;m.append(c,t);
     var h=document.createElement('h3');h.textContent=p.title;
     var d=document.createElement('p');d.textContent=p.dek;
@@ -756,7 +787,7 @@ footer a{color:inherit}
     return a;
   }
   document.querySelectorAll('[data-list]').forEach(function(el){
-    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-fuel'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
+    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-fuel'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):L==='sport'?posts.filter(function(p){return p.cat==='Sport'}):L==='cricket'?posts.filter(function(p){return p.sub==='Cricket'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
     list.forEach(function(p){el.appendChild(L==='travels'?ftile(p):card(p))});
   });
   var pages=document.querySelectorAll('[data-page]');
@@ -772,6 +803,7 @@ footer a{color:inherit}
     if(!found){h='home';pages.forEach(function(p){p.hidden=p.dataset.page!=='home'})}
     var section=h.indexOf('post-')===0?'stories':h;
     if(h==='post-ride')section='original';
+    if(h==='sport-cricket'||posts.some(function(p){return p.id===h&&p.cat==='Sport'}))section='sport';
     if(h==='post-lovebar'||h==='post-jeana')section='travels';
     if(h.indexOf('orig-')===0)section='original';
     navs.forEach(function(n){if(n.dataset.nav===section)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current')});

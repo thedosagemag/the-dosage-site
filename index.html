@@ -134,6 +134,24 @@ section{padding-block:clamp(44px,7vw,88px);border-top:1px solid var(--rule)}
 .article h2{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.5rem;margin:1.6em 0 .5em}
 .article blockquote{margin:1.4em 0;padding-left:20px;border-left:4px solid var(--red);font-family:var(--serif);font-size:1.7rem;line-height:1.15;border-radius:0}
 .article .note{font-size:.95rem;color:var(--muted)}
+/* Sport + The Crease (cricket) */
+.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 0}
+.subnav a{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);border:1px solid var(--ink);padding:7px 12px;border-radius:999px}
+.subnav a[aria-current="page"],.subnav a:hover{background:var(--ink);color:var(--paper)}
+.crease-head h1{display:flex;align-items:baseline;gap:.25em;flex-wrap:wrap}
+.crease-head h1 small{font-family:var(--mono);font-size:.8rem;font-stretch:100%;letter-spacing:.18em;color:var(--red-text)}
+.board{--bd:#1E3B2C;--bl:#F3EBD3;--bm:#B9C7A8;background:var(--bd);color:var(--bl);margin:28px 0 8px;padding:clamp(16px,3vw,28px);border:6px solid #2C5440;box-shadow:inset 0 0 0 2px #10241A}
+.board .bhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bm);border-bottom:1px dashed #3E6A52;padding-bottom:10px}
+.board .btitle{font-family:var(--display);font-weight:900;font-stretch:70%;text-transform:uppercase;font-size:clamp(1.9rem,6vw,3.4rem);line-height:.9;margin:14px 0 6px;letter-spacing:.01em}
+.board .bsub{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bm);margin:0 0 16px}
+.board ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.board li{display:grid;grid-template-columns:2.2em minmax(0,1fr) minmax(0,1fr);align-items:center;gap:10px;background:#16301F;padding:10px 12px}
+.board li b{font-family:var(--mono);color:#F2C14E;font-size:1rem}
+.board .tm{font-family:var(--display);font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:clamp(1rem,3.4vw,1.45rem);line-height:1.05}
+.board .tm em{display:block;font-style:normal;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--bm);font-weight:400}
+.board .tm.r{text-align:right}
+.board .bfoot{margin:14px 0 0;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bm)}
+@media (max-width:480px){.board li{grid-template-columns:1.6em minmax(0,1fr)}.board .tm.r{text-align:left;grid-column:2}}
 .numbers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.4em 0}
 .numbers div{background:var(--paper);padding:16px}
 .numbers b{display:block;font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
@@ -516,6 +534,7 @@ footer a{color:inherit}
     <nav class="nav" aria-label="Main">
       <a href="#home" data-nav="home">Home</a>
       <a href="#stories" data-nav="stories">Stories</a>
+      <a href="#sport" data-nav="sport">Sport</a>
       <a href="#edition" data-nav="edition">Edition 01</a>
       <a href="#original" data-nav="original">The Original</a>
       <a href="#travels" data-nav="travels">Editor’s Travels</a>
@@ -585,6 +604,32 @@ footer a{color:inherit}
   <div class="films-grid" data-list="travels"></div>
   <a class="reel-more" href="#travels">All Editor’s Travels →</a></section>
   <section><div class="grid" data-list="all"></div></section>
+</div>
+
+<!-- SPORT -->
+<div class="page" data-page="sport" hidden>
+  <div class="pagehead"><span class="label red">The Dosage</span><h1>Sport</h1><p>Cricket, community sport and the games our readers play, from Melbourne to Colombo. Every number is sourced.</p>
+    <nav class="subnav" aria-label="Sport sections"><a href="#sport" aria-current="page">All sport</a><a href="#sport-cricket">The Crease · Cricket</a></nav></div>
+  <section><div class="grid" data-list="sport"></div></section>
+</div>
+
+<!-- SPORT: CRICKET -->
+<div class="page" data-page="sport-cricket" hidden>
+  <div class="pagehead crease-head"><span class="label red">Sport · Cricket</span><h1>The Crease</h1><p>Women’s and men’s cricket, the Big Bash and Sri Lanka’s game, for Melbourne’s cricket-first families.</p>
+    <nav class="subnav" aria-label="Sport sections"><a href="#sport">All sport</a><a href="#sport-cricket" aria-current="page">The Crease · Cricket</a></nav></div>
+  <a href="#post-wbbl12" style="display:block;margin-top:28px;text-decoration:none"><figure class="pic" style="margin:0"><img src="posts/img/news/wbbl12/hero.jpg" width="1600" height="900" alt="Players from all eight WBBL teams, each in their club kit, at the launch of WBBL|12 at the Sydney Botanic Gardens" loading="lazy"><figcaption>Players from the eight clubs at the WBBL|12 launch in Sydney. Photo: Jason McCawley / Getty Images via Cricket Australia.</figcaption></figure></a>
+  <div class="board" aria-labelledby="board-h">
+    <div class="bhead"><span>Weber WBBL|12</span><span>Opening night · Melbourne</span></div>
+    <div class="btitle" id="board-h">Thu 29 Oct · Junction Oval</div>
+    <p class="bsub">Double-header under lights</p>
+    <ol>
+      <li><b>1</b><span class="tm">Melbourne Renegades</span><span class="tm r">Sydney Thunder<em>visitors</em></span></li>
+      <li><b>2</b><span class="tm">Melbourne Stars</span><span class="tm r">Hobart Hurricanes<em>reigning champions</em></span></li>
+    </ol>
+    <p class="bfoot">Week one ends: Hurricanes v Renegades, Ninja Stadium · Source: Cricket Australia, 23 Oct 2026</p>
+  </div>
+  <p style="margin:0 0 4px"><a class="label red" href="#post-wbbl12">Read: what to know before the first ball →</a></p>
+  <section><div class="grid" data-list="cricket"></div></section>
 </div>
 
 <!-- EDITION -->
@@ -2189,6 +2234,44 @@ footer a{color:inherit}
   <p class="note">Sources: <a href="https://ceylonpickleleague.com/" target="_blank" rel="noopener">Ceylon Pickle League</a>; <a href="https://www.themorning.lk/articles/yvL5hUUvMWiLvBvKIjzI" target="_blank" rel="noopener">The Morning</a> (May 2026); <a href="https://www.ft.lk/sports/Ceylon-Pickle-League-debuts-as--Sri-Lanka-enters-franchise-sports-era/23-792827" target="_blank" rel="noopener">Daily FT</a> (June 2026); <a href="https://www.sundaytimes.lk/260607/sports/ceylon-pickle-league-set-to-ignite-sri-lankas-pickleball-boom-644672.html" target="_blank" rel="noopener">Sunday Times</a> (June 2026); <a href="https://www.thepapare.com/matheesha-pathirana-enters-franchise-ownership-with-yarl-dinkers" target="_blank" rel="noopener">ThePapare</a> (August 2026).</p>
 </article>
 
+<article class="page article" data-page="post-wbbl12" hidden>
+  <a class="back" href="#sport-cricket">← The Crease</a>
+  <h1>The WBBL comes home: season 12 opens at Junction Oval next Thursday</h1>
+  <p class="dek">Renegades v Thunder, then Stars v the reigning champions Hurricanes, in a double-header under lights on 29 October.</p>
+  <div class="byline"><span class="label red">Sport · Cricket</span><span class="label">The Dosage</span><span class="label">23 October 2026</span></div>
+  <figure class="pic"><img src="posts/img/news/wbbl12/hero.jpg" width="1600" height="900" alt="Players from all eight WBBL teams, each in their club kit, at the launch of WBBL|12 at the Sydney Botanic Gardens"><figcaption>Players from the eight clubs at the WBBL|12 launch in Sydney. Photo: Jason McCawley / Getty Images via Cricket Australia.</figcaption></figure>
+  <p>The Weber WBBL|12 season starts in Melbourne next Thursday, 29 October, with a double-header under lights at Junction Oval, Cricket Australia announced on Friday.</p>
+  <p>The Melbourne Renegades host the Sydney Thunder in the first match. The Melbourne Stars then take on the Hobart Hurricanes, the reigning champions.</p>
+  <div class="numbers">
+    <div><b>29 Oct</b><span>opening night, Junction Oval</span></div>
+    <div><b>2</b><span>matches under lights on the first night</span></div>
+    <div><b>8</b><span>teams in the league</span></div>
+    <div><b>WBBL|11</b><span>won by the Hurricanes, last season’s champions</span></div>
+  </div>
+  <h2>The first week</h2>
+  <p>Cricket Australia says every state will host home matches in the opening week, including a double-header at Drummoyne Oval. The week ends with the Hurricanes hosting the Renegades at Ninja Stadium, the ground where they won WBBL|11.</p>
+  <p>The season was launched at the Sydney Botanic Gardens on Friday, with T20 world champions among the players there. According to Cricket Australia, stars from Australia’s ICC T20 World Cup win are spread across the league, alongside international players.</p>
+  <h2>Easier for families</h2>
+  <p>Alistair Dobson, Executive General Manager of the Big Bash Leagues, said there would be more matches under lights than ever before, and more games from Thursday to Sunday.</p>
+  <blockquote>“Easier for families to get along.”</blockquote>
+  <p>He said clubs were again “prioritising affordability for families”, and that last season brought record broadcast numbers and digital engagement.</p>
+  <p>Cricket Australia has published the full WBBL|12 schedule.</p>
+  <p class="note">Sources: Cricket Australia media release, 23 October 2026.</p>
+</article>
+
+<article class="page article" data-page="post-schutt" hidden>
+  <a class="back" href="#sport-cricket">← The Crease</a>
+  <h1>Megan Schutt suspended for two matches</h1>
+  <p class="dek">Cricket Australia says a single, out-of-competition breach of its prescription-medication rules was not performance-enhancing.</p>
+  <div class="byline"><span class="label red">Sport · Cricket</span><span class="label">The Dosage</span><span class="label">23 October 2026</span></div>
+  <p>Australian cricketer Megan Schutt has been suspended for two matches, Cricket Australia announced on 22 October.</p>
+  <p>According to Cricket Australia, Schutt failed to follow its Sports Science and Sports Medicine guidelines on prescription medication.</p>
+  <p>The governing body said the breach was a single incident that happened out of competition, and was “not for performance enhancing purposes”.</p>
+  <p>The two-match ban covers all international and domestic cricket.</p>
+  <p>In its statement, Cricket Australia said it would keep supporting Schutt and reinforce “the standards and responsibilities expected of everyone representing our game”.</p>
+  <p class="note">Sources: Cricket Australia media release, 22 October 2026.</p>
+</article>
+
 <article class="page article" data-page="post-pickleball" hidden>
   <a class="back" href="#stories">← Stories</a>
   <h1>Pickleball has found Colombo</h1>
@@ -2353,6 +2436,8 @@ footer a{color:inherit}
 <script>
 (function(){
   var posts=[
+    {id:'post-wbbl12',cat:'Sport',sub:'Cricket',date:'23 Oct 2026',title:'The WBBL comes home: season 12 opens at Junction Oval next Thursday',dek:'Renegades v Thunder, then Stars v the reigning champions Hurricanes, in a double-header under lights on 29 October.'},
+    {id:'post-schutt',cat:'Sport',sub:'Cricket',date:'23 Oct 2026',title:'Megan Schutt suspended for two matches',dek:'Cricket Australia says a single, out-of-competition breach of its prescription-medication rules was not performance-enhancing.'},
     {id:'post-trees',cat:'Melbourne',date:'23 Oct 2026',title:'100,000 more trees for Melbourne’s hotter suburbs',dek:'More than 100,000 trees will be planted in suburbs with less shade, and 10 shopping strips and streets will get a green makeover.'},
     {id:'post-protein-static',cat:'Lifestyle',date:'23 Oct 2026',title:'Why your protein shake clumps, and how Melbourne science could one day fix it',dek:'RMIT researchers have shown static charge can be turned up, flipped or switched off with an electric field. Food powders are the next test.'},
     {id:'post-smart-glasses',cat:'Melbourne',date:'21 Oct 2026',title:'Smart glasses to be banned in every Victorian school from 2027',dek:'From term 1, phones, smart glasses and other personal devices must be switched off and stored. What it means for students, parents and volunteers.'},
@@ -2381,8 +2466,8 @@ footer a{color:inherit}
     {id:'post-melbourne',cat:'Colombo · Melbourne',date:'12 Oct 2026',title:'Little Lanka: Sri Lankans in Melbourne, by the numbers',dek:'Half of all Sri Lanka-born Australians live in one city.'},
     {id:'post-remit',cat:'Colombo · Melbourne',date:'12 Oct 2026',title:'The money home: $8 billion and counting',dek:'Sri Lankans abroad sent home a record US$8.07 billion in 2025.'},
     {id:'post-imf',cat:'Explained',date:'12 Oct 2026',title:'The $3 billion deal, explained',dek:'What the IMF programme asked for, and what happens when it ends in March 2027.'},
-    {id:'post-cpl',cat:'Sport',date:'12 Oct 2026',title:'Sri Lanka’s first pickleball league serves on Friday',dek:'Eight franchises, a player auction and a cricketer in the owners’ box. The Ceylon Pickle League runs 16–18 October.'},
-    {id:'post-pickleball',cat:'Sport',date:'12 Oct 2026',title:'Pickleball has found Colombo',dek:'Two years after the first courts opened, the paddle sport is everywhere from Nugegoda to Negombo.'},
+    {id:'post-cpl',cat:'Sport',sub:'Pickleball',date:'12 Oct 2026',title:'Sri Lanka’s first pickleball league serves on Friday',dek:'Eight franchises, a player auction and a cricketer in the owners’ box. The Ceylon Pickle League runs 16–18 October.'},
+    {id:'post-pickleball',cat:'Sport',sub:'Pickleball',date:'12 Oct 2026',title:'Pickleball has found Colombo',dek:'Two years after the first courts opened, the paddle sport is everywhere from Nugegoda to Negombo.'},
     {id:'post-walk',cat:'Fitness',date:'12 Oct 2026',title:'The two-minute walk after dinner',dek:'A short stroll after eating blunts the blood sugar spike. No gym needed.'},
     {id:'post-cinnamon',cat:'Food',date:'12 Oct 2026',title:'The cinnamon in your kitchen probably isn’t ours',dek:'Most cinnamon sold worldwide is cassia. Ceylon cinnamon is a different spice, with a hundred times less coumarin.'},
     {id:'post-default',cat:'Explained',date:'12 Oct 2026',title:'What happens when a country can’t pay?',dek:'The dollar jar, the default, and why the fuel queues began.'},
@@ -2394,7 +2479,7 @@ footer a{color:inherit}
   function card(p){
     var a=document.createElement('a');a.className='card';a.href='#'+p.id;
     var m=document.createElement('div');m.className='meta';
-    var c=document.createElement('span');c.className='label red';c.textContent=p.cat;
+    var c=document.createElement('span');c.className='label red';c.textContent=p.sub?p.cat+' · '+p.sub:p.cat;
     var t=document.createElement('time');t.textContent=p.date;m.append(c,t);
     var h=document.createElement('h3');h.textContent=p.title;
     var d=document.createElement('p');d.textContent=p.dek;
@@ -2408,7 +2493,7 @@ footer a{color:inherit}
     return a;
   }
   document.querySelectorAll('[data-list]').forEach(function(el){
-    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-fuel'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
+    var L=el.dataset.list,list=L==='home'?posts.filter(function(p){return p.id!=='post-fuel'&&p.cat!=='Editor’s Travels'}).slice(0,6):L==='travels'?posts.filter(function(p){return p.cat==='Editor’s Travels'}):L==='sport'?posts.filter(function(p){return p.cat==='Sport'}):L==='cricket'?posts.filter(function(p){return p.sub==='Cricket'}):posts.filter(function(p){return p.cat!=='Editor’s Travels'});
     list.forEach(function(p){el.appendChild(L==='travels'?ftile(p):card(p))});
   });
   var pages=document.querySelectorAll('[data-page]');
@@ -2424,6 +2509,7 @@ footer a{color:inherit}
     if(!found){h='home';pages.forEach(function(p){p.hidden=p.dataset.page!=='home'})}
     var section=h.indexOf('post-')===0?'stories':h;
     if(h==='post-ride')section='original';
+    if(h==='sport-cricket'||posts.some(function(p){return p.id===h&&p.cat==='Sport'}))section='sport';
     if(h==='post-lovebar'||h==='post-jeana')section='travels';
     if(h.indexOf('orig-')===0)section='original';
     navs.forEach(function(n){if(n.dataset.nav===section)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current')});
