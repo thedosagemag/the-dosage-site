@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Take a new Victorian home apart in 3D, stage by stage: what gets built, who inspects it, what you can be asked to pay and what to check before you pay. General information, not legal advice.">
+<link rel="canonical" href="https://thedosagemag.com/explained/how-a-house-gets-built/">
+<meta property="og:title" content="How a house gets built, piece by piece | The Dosage">
+<meta property="og:description" content="Take a new Victorian home apart in 3D, stage by stage, and see what you can be asked to pay at each stage.">
+<meta property="og:image" content="https://thedosagemag.com/posts/img/news/free-legal-help-victorians/explainer-card.jpg">
+<meta property="og:url" content="https://thedosagemag.com/explained/how-a-house-gets-built/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/the-dosage-logo-square.png">
+<title>How a house gets built, piece by piece | The Dosage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,500..900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: a Dosage explainer — the house as a 3D model you take apart, a six-step stage rail under it, and a "what happens / inspection / what you pay / check before paying" card for the chosen stage, with a running payment bar. */
+:root{
+  --bg:#121212; --panel:#1b1a19; --ink:#F1EDE4; --muted:#a39d97; --line:#2f2c2a;
+  --red:#E0342B; --red-soft:#3a1714; --timber:#D9B98A; --ok:#7fd1a8;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --serif:"Newsreader",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F1EDE4;--panel:#fbfaf8;--ink:#141312;--muted:#67625d;--line:#dcd8d2;--red:#D7261E;--red-soft:#f9e1de;--timber:#a8824a;--ok:#2f6b4f;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F1EDE4;--panel:#fbfaf8;--ink:#141312;--muted:#67625d;--line:#dcd8d2;--red:#D7261E;--red-soft:#f9e1de;--timber:#a8824a;--ok:#2f6b4f;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--serif);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.kick{font:700 12px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+h1{margin:6px 0 8px;font:900 clamp(34px,6vw,64px)/.92 var(--display);font-stretch:72%;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--red)}
+.dek{margin:0;max-width:70ch;font-size:19px;color:var(--muted)}
+.stage3d{position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,#24201d 0%,#121212 70%);aspect-ratio:16/9;max-width:100%;min-height:300px}
+:root[data-theme="light"] .stage3d{background:radial-gradient(ellipse at 50% 70%,#fffdf8 0%,#e7e1d5 75%)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .stage3d{background:radial-gradient(ellipse at 50% 70%,#fffdf8 0%,#e7e1d5 75%)}}
+#c{display:block;width:100%;height:100%;touch-action:none}
+.hud{position:absolute;left:12px;right:12px;top:10px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;pointer-events:none}
+.hud>*{pointer-events:auto}
+.tag{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;background:rgba(0,0,0,.55);color:#F1EDE4;padding:6px 9px;border-radius:3px}
+.tag b{color:#ff5a4e}
+.ctrls{position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--ink);background:var(--bg);color:var(--ink);padding:8px 14px;border-radius:999px;font:700 13px var(--display);cursor:pointer}
+.btn.on{background:var(--red);border-color:var(--red);color:#fff}
+.slide{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.55);color:#F1EDE4;padding:6px 12px;border-radius:999px;font:700 11px var(--mono);letter-spacing:.1em}
+.slide input{width:140px;accent-color:#E0342B}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted)}
+.rail{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+@media (max-width:720px){.rail{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.step{border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:10px 12px;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:2px;border-top:4px solid var(--line)}
+.step .n{font:700 11px var(--mono);letter-spacing:.14em;color:var(--muted)}
+.step .t{font:800 17px/1.1 var(--display)}
+.step .p{font:700 12px var(--mono);color:var(--muted)}
+.step[aria-current="step"]{border-top-color:var(--red);background:var(--red-soft)}
+.step[aria-current="step"] .n,.step[aria-current="step"] .p{color:var(--red)}
+.step.done{border-top-color:var(--timber)}
+.step:focus-visible,.btn:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.paybar{display:flex;flex-direction:column;gap:6px}
+.paybar .lab{display:flex;justify-content:space-between;font:700 12px var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.bar{display:flex;height:16px;border-radius:3px;overflow:hidden;background:var(--line)}
+.bar i{display:block;height:100%;border-right:2px solid var(--bg);background:var(--timber);transition:opacity .2s}
+.bar i.now{background:var(--red)}
+.bar i.later{opacity:.18}
+.card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px}
+@media (max-width:820px){.card{grid-template-columns:minmax(0,1fr)}}
+.card h2{margin:0 0 6px;font:900 34px/1 var(--display);font-stretch:78%;text-transform:uppercase}
+.card h3{margin:16px 0 6px;font:700 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.card p{margin:0 0 8px;max-width:62ch}
+.card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.side{display:flex;flex-direction:column;gap:12px}
+.box{border:1px solid var(--line);border-radius:4px;padding:14px}
+.big{font:900 54px/1 var(--display);color:var(--red);letter-spacing:-.03em}
+.big small{font:700 13px var(--mono);letter-spacing:.06em;color:var(--muted);display:block;margin-top:4px}
+.twist{border-left:4px solid var(--red);padding:12px 16px;background:var(--red-soft);border-radius:0 4px 4px 0}
+.twist b{font-family:var(--display)}
+.twist a{color:var(--ink);font-weight:600}
+.src{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.src a{color:var(--ink)}
+.note{font:500 12px var(--mono);color:var(--muted)}
+.foot{display:flex;align-items:center;gap:12px;font:500 14px var(--mono);color:var(--muted)}
+.logo{width:34px;height:34px;background:var(--red);color:#fff;display:grid;place-items:center;font:900 22px var(--display);border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>.dz-embed .dz-bar{display:none!important}</style>
+</head>
+<body>
+<div class="dz-bar" style="max-width:1180px;margin:0 auto 8px;display:flex;justify-content:space-between;align-items:center;gap:12px;font:700 12px var(--mono);letter-spacing:.16em;text-transform:uppercase"><a href="/" style="color:inherit;text-decoration:none">THE DOSAGE</a><a href="/stories/free-legal-help-victorians/" style="color:var(--red);text-decoration:none">← The story: free legal help for home builders</a></div>
+<script>if(/[?&]embed=1/.test(location.search)){document.documentElement.classList.add('dz-embed')}</script>
+
+
+<div class="wrap">
+  <header>
+    <div class="kick">The Dosage · Explained · Victoria</div>
+    <h1>How a house gets built, <em>piece by piece.</em></h1>
+    <p class="dek">Take a new home apart, stage by stage. At each step: what gets built, who inspects it, what you can be asked to pay, and what to check before you pay.</p>
+  </header>
+
+  <div class="stage3d" id="stage3d">
+    <canvas id="c" aria-label="3D model of a house that can be taken apart into its building stages"></canvas>
+    <div class="hud"><span class="tag" id="hudStage">Stage <b>0</b> · Before the build</span><span class="tag">Drag to turn · pinch or scroll to zoom</span></div>
+    <div class="ctrls">
+      <button class="btn" id="explode" type="button" aria-pressed="false">Take it apart</button>
+      <label class="slide">TOGETHER <input id="ex" type="range" min="0" max="100" value="0" aria-label="How far apart the layers are"> APART</label>
+      <button class="btn" id="spin" type="button" aria-pressed="true">Pause turning</button>
+    </div>
+  </div>
+
+  <nav class="rail" id="rail" aria-label="Building stages"></nav>
+
+  <div class="paybar" aria-label="How much of the contract price can be paid by this stage">
+    <div class="lab"><span>Paid so far, at most (build all stages, 5% deposit)</span><span id="paid">0%</span></div>
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <section class="card" id="card" aria-live="polite"></section>
+
+  <div class="twist"><b>Our twist:</b> the builder, the building surveyor and the insurer each look after their part. This page follows the money and the paperwork from your side, so you know what should be done before each payment leaves your account. Free legal help for home builders is now available at every stage: <a href="https://justiceconnect.org.au/help/building-disputes/" target="_blank" rel="noopener">Justice Connect ↗</a></div>
+
+  <div class="src">
+    <p class="note">General information for Victoria, not legal or building advice. The deposit and payment percentages are the standard ones for a contract to build all stages; your contract sets yours. These are the rules as of October 2026. Victoria's new domestic building contract laws are set to start on 1 December 2026, and the government has proposed new deposit and progress payment limits for homes, which it consulted on until 16 September 2026. If you sign a contract from 1 December 2026, check Consumer Affairs Victoria for the rules that apply to you.</p>
+    <span>Sources:</span>
+    <a href="https://www.consumer.vic.gov.au/housing/building-and-renovating/checklists/paying-for-building-work" target="_blank" rel="noopener">Consumer Affairs Victoria: Paying for building work (checklist) ↗</a>
+    <a href="https://consumer.vic.gov.au/housing/building-and-renovating/plan-and-manage-your-building-project/deposits-and-payments" target="_blank" rel="noopener">Consumer Affairs Victoria: Deposits and payments for building work ↗</a>
+    <a href="https://consumer.vic.gov.au/housing/building-and-renovating/defects-delays-and-insolvency/insurance-and-insolvency" target="_blank" rel="noopener">Consumer Affairs Victoria: Domestic building insurance and insolvency ↗</a>
+    <a href="https://alpineshire.vic.gov.au/sites/default/files/B10-What_are_the_mandatory_inspections_0.pdf" target="_blank" rel="noopener">Alpine Shire Council: What are the mandatory inspections? ↗</a>
+    <a href="https://www.consumer.vic.gov.au/latest-news/new-domestic-building-contract-laws-passed-in-victoria" target="_blank" rel="noopener">Consumer Affairs Victoria: New domestic building contract laws passed in Victoria ↗</a>
+    <a href="https://www.vic.gov.au/notice-preparation-regulatory-impact-statement-24" target="_blank" rel="noopener">Victorian Government: Proposed Domestic Building Contracts Amendment Regulations 2026 ↗</a>
+    <a href="https://www.premier.vic.gov.au/backing-families-against-dodgy-builders" target="_blank" rel="noopener">Victorian Government: Backing Families Against Dodgy Builders, 22 October 2026 ↗</a>
+  </div>
+  <div class="foot"><span class="logo">D</span>thedosagemag.com · Illustration: The Dosage</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const STAGES=[
+ {n:0,t:'Before the build',pay:5,payLabel:'Deposit: up to 5%',
+  built:'Nothing on site yet. This is the paperwork stage: the design, the contract and the permits.',
+  steps:['A building permit is issued by a building surveyor before work starts.','You sign a major domestic building contract with a registered builder.','From 1 July 2026 your builder takes out Home Warranty insurance (a first-resort scheme run by the Building and Plumbing Commission) for work over $20,000. You should get a notice of cover.'],
+  insp:'No inspection yet, but check the builder’s registration number.',
+  check:['Don’t pay the deposit until you have proof of the builder’s insurance for your address and have checked their registration.','Deposit cap: up to 5% if the contract is $20,000 or more (10% if it’s under $20,000).','If the builder wants a non-standard payment schedule, get legal advice first.']},
+ {n:1,t:'Base',pay:10,payLabel:'Up to 10% of the contract',
+  built:'The foundations. For a concrete slab, the floor is poured and complete. For a timber floor on footings, the footings are poured and the base brickwork reaches floor level.',
+  steps:['Footings and foundations are dug and checked.','Plastic membrane and steel reinforcement go down before the concrete is poured.'],
+  insp:'Two mandatory inspections: the ground and footings, then the steel reinforcement before the slab is poured.',
+  check:['The stage has passed the inspections the permit requires.','It matches the contract plans and specifications.','It is actually complete. Don’t pay in advance: insurance may not cover work you paid for before it was done.']},
+ {n:2,t:'Frame',pay:15,payLabel:'Up to 15% of the contract',
+  built:'The skeleton of the house: wall frames and roof trusses, standing on the base.',
+  steps:['Wall frames go up; roof trusses are fixed on top.','Frame members must match the approved plans in size, type and spacing.'],
+  insp:'Mandatory frame inspection, before any wall cladding or roofing goes on. The frame stage is only complete when a building surveyor has approved it.',
+  check:['Ask to see that the frame has been approved by the building surveyor.','Any changes to the frame need re-approval.','Pay only once the stage is complete.']},
+ {n:3,t:'Lock-up',pay:35,payLabel:'Up to 35%: the biggest payment',
+  built:'The house is closed in: outside walls clad, roof covering on, flooring laid, and the external doors and windows fitted (even if temporary).',
+  steps:['Bricks or cladding go on the outside walls.','Roof covering goes on.','External doors and windows go in.'],
+  insp:'No mandatory council inspection at this stage, so check the work against the contract yourself, or pay an independent building consultant.',
+  check:['This is the largest payment, so make sure every lock-up item is really done.','Compare against the plans and specifications.','Put any concerns to the builder in writing.']},
+ {n:4,t:'Fixing',pay:25,payLabel:'Up to 25% of the contract',
+  built:'The inside goes in: internal linings, architraves and skirting, doors, built-in shelves, cupboards and cabinets, baths, basins and sinks, fitted and fixed.',
+  steps:['Plasterboard linings and trims.','Kitchen and bathroom fit-out.','Internal doors and built-ins.'],
+  insp:'No mandatory inspection at this stage. You can request a pre-final inspection later to find outstanding items.',
+  check:['Every fixing item in the contract is fitted and fixed, not just delivered.','Don’t withhold a payment over defects once the stage is complete: get legal advice first.']},
+ {n:5,t:'Completion',pay:10,payLabel:'The balance: about 10%',
+  built:'The work is finished to the plans and specifications, including the stormwater connection.',
+  steps:['Final inspection by the building surveyor.','For a new home, an occupancy permit is issued. It needs working bathroom, toilet, laundry and cooking facilities, hard-wired smoke alarms and a waterproof exterior.'],
+  insp:'Mandatory final inspection. An occupancy permit is issued for a new home (a certificate of final inspection for an extension or renovation).',
+  check:['The builder isn’t entitled to the final payment until the work is finished and the occupancy permit is issued.','List any faulty or incomplete work, raise it promptly and in writing.','Defects: Home Warranty insurance covers structural faults for 6 years and non-structural faults for 2 years.']}
+];
+let cur=0;const rail=document.getElementById('rail');
+rail.innerHTML=STAGES.map(s=>`<button type="button" class="step" data-s="${s.n}"><span class="n">STAGE ${s.n}</span><span class="t">${s.t}</span><span class="p">${s.n===0?'Deposit 5%':s.n===5?'Balance':s.pay+'%'}</span></button>`).join('');
+const PAYS=STAGES.map(s=>s.pay);
+document.getElementById('bar').innerHTML=PAYS.map((p,i)=>`<i style="width:${p}%" data-i="${i}" title="${STAGES[i].t}: ${p}%"></i>`).join('');
+function show(i){cur=i;const s=STAGES[i];
+ rail.querySelectorAll('.step').forEach((b,j)=>{b.setAttribute('aria-current',j===i?'step':'false');b.classList.toggle('done',j<i)});
+ document.querySelectorAll('#bar i').forEach((b,j)=>{b.className=j<i?'':j===i?'now':'later'});
+ document.getElementById('paid').textContent=PAYS.slice(0,i+1).reduce((a,b)=>a+b,0)+'%';
+ document.getElementById('hudStage').innerHTML=`Stage <b>${s.n}</b> · ${s.t}`;
+ document.getElementById('card').innerHTML=`<div><h2>${s.t}</h2><p>${s.built}</p><h3>What happens</h3><ul>${s.steps.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Inspection</h3><p>${s.insp}</p></div>
+ <div class="side"><div class="box"><div class="big">${s.n===5?'Balance':s.pay+'%'}<small>${s.payLabel}</small></div></div><div class="box"><h3 style="margin-top:0">Check before you pay</h3><ul>${s.check.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>`;
+ if(window.setStage3d)setStage3d(i);}
+rail.addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b)show(+b.dataset.s)});
+show(0);
+
+(function(){
+ if(!window.THREE){document.getElementById('stage3d').insertAdjacentHTML('beforeend','<div class="nogl">The 3D model couldn’t load here. The stage guide below still works.</div>');return}
+ const cv=document.getElementById('c');let R;
+ try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){document.getElementById('stage3d').insertAdjacentHTML('beforeend','<div class="nogl">3D isn’t available on this device. The stage guide below still works.</div>');return}
+ R.setPixelRatio(Math.min(2,devicePixelRatio||1));
+ const S=new THREE.Scene();const cam=new THREE.PerspectiveCamera(38,16/9,.1,200);cam.position.set(15,11,17);
+ const ctl=new THREE.OrbitControls(cam,cv);ctl.target.set(0,2.6,0);ctl.enableDamping=true;ctl.autoRotate=!matchMedia('(prefers-reduced-motion: reduce)').matches;ctl.autoRotateSpeed=.6;ctl.minDistance=10;ctl.maxDistance=48;ctl.maxPolarAngle=Math.PI*.49;
+ S.add(new THREE.HemisphereLight(0xfff4e6,0x2a2522,.9));const sun=new THREE.DirectionalLight(0xffffff,.8);sun.position.set(8,14,6);S.add(sun);
+ const M=c=>new THREE.MeshLambertMaterial({color:c,transparent:true,opacity:1});
+ const box=(g,w,h,d,x,y,z,m,ry=0)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.rotation.y=ry;g.add(o);return o};
+ const W=10,D=7,H=2.7;const layers=[];
+ // 1 base
+ const base=new THREE.Group();const mSlab=M(0x9b958c);box(base,W+.6,.35,D+.6,0,.175,0,mSlab);
+ for(const[x,z]of[[-5,-3.5],[5,-3.5],[-5,3.5],[5,3.5],[0,-3.5],[0,3.5]])box(base,.5,.35,.5,x,-.15,z,M(0x7d776f));
+ layers.push(base);
+ // 2 frame
+ const frame=new THREE.Group();const mT=M(0xD9B98A);const y0=.35;
+ const wall=(len,cx,cz,rot)=>{const n=Math.round(len/.6);for(let i=0;i<=n;i++){const t=-len/2+i*len/n;const o=box(frame,.09,H,.09,0,y0+H/2,0,mT);o.position.set(cx+(rot?0:t),y0+H/2,cz+(rot?t:0));}
+  const p1=box(frame,rot?.1:len,.1,rot?len:.1,cx,y0+H,cz,mT);const p2=box(frame,rot?.1:len,.1,rot?len:.1,cx,y0+.05,cz,mT);};
+ wall(W,0,-D/2,false);wall(W,0,D/2,false);wall(D,-W/2,0,true);wall(D,W/2,0,true);wall(D,0,0,true);
+ for(let i=0;i<=8;i++){const x=-W/2+i*W/8;const g=new THREE.Group();const half=D/2+.3,rise=2;const len=Math.hypot(half,rise),ang=Math.atan2(rise,half);
+  const a=box(g,.08,.08,len,0,0,0,mT);a.position.set(0,rise/2,-half/2);a.rotation.x=-ang;const b=box(g,.08,.08,len,0,0,0,mT);b.position.set(0,rise/2,half/2);b.rotation.x=ang;
+  box(g,.08,.08,D+.6,0,0,0,mT);box(g,.08,rise,.08,0,rise/2,0,mT);g.position.set(x,y0+H+.05,0);frame.add(g);}
+ layers.push(frame);
+ // 3 lock-up
+ const lock=new THREE.Group();const mBrick=M(0xa65a42),mRoof=M(0x3b3f45),mGlass=M(0x8fb3cc),mDoor=M(0x5a3d2b);
+ box(lock,W+.2,H,.18,0,y0+H/2,-D/2-.12,mBrick);box(lock,W+.2,H,.18,0,y0+H/2,D/2+.12,mBrick);box(lock,.18,H,D+.4,-W/2-.12,y0+H/2,0,mBrick);box(lock,.18,H,D+.4,W/2+.12,y0+H/2,0,mBrick);
+ for(const x of[-3.2,-1.2,2.8])box(lock,1.3,1.1,.06,x,y0+1.7,D/2+.23,mGlass);box(lock,.95,2.1,.06,.9,y0+1.05,D/2+.23,mDoor);
+ for(const x of[-2.5,2.5])box(lock,1.6,1.1,.06,x,y0+1.7,-D/2-.23,mGlass);
+ const roofW=W+1,half=D/2+.6,rise=2.05,rl=Math.hypot(half,rise),ra=Math.atan2(rise,half);
+ const r1=box(lock,roofW,.12,rl,0,0,0,mRoof);r1.position.set(0,y0+H+rise/2+.12,-half/2);r1.rotation.x=-ra;const r2=box(lock,roofW,.12,rl,0,0,0,mRoof);r2.position.set(0,y0+H+rise/2+.12,half/2);r2.rotation.x=ra;
+ layers.push(lock);
+ // 4 fixing
+ const fix=new THREE.Group();const mPl=M(0xe9e4da),mCab=M(0xf1ede4),mBen=M(0x2b2b2b),mBath=M(0xffffff);
+ box(fix,.08,H-.1,D-.4,0,y0+H/2,0,mPl);box(fix,W/2-.3,H-.1,.08,W/4,y0+H/2,.6,mPl);
+ box(fix,3,.9,.6,-2.5,y0+.45,-D/2+.55,mCab);box(fix,3.04,.05,.64,-2.5,y0+.92,-D/2+.55,mBen);box(fix,3,.7,.35,-2.5,y0+2.1,-D/2+.4,mCab);
+ box(fix,1.6,.55,.75,3.6,y0+.28,2.6,mBath);box(fix,.5,.85,.4,1.6,y0+.43,2.9,mBath);box(fix,.85,2.05,.05,0,y0+1.03,1.8,M(0xc9b48f),Math.PI/2);
+ layers.push(fix);
+ // 5 completion
+ const comp=new THREE.Group();const mGr=M(0x6E8B6B),mPath=M(0xbdb5a8);
+ box(comp,W+7,.05,D+8,0,-.03,1,mGr);box(comp,1.2,.06,4,.9,.04,D/2+2.3,mPath);box(comp,3.2,.06,5,-3.4,.04,D/2+2.8,mPath);
+ for(const[x,z]of[[5.6,4.6],[-6.6,-2],[6.4,-3]]){box(comp,.18,1,.18,x,.5,z,M(0x6b4a2f));const c=new THREE.Mesh(new THREE.SphereGeometry(.8,12,10),mGr);c.position.set(x,1.5,z);comp.add(c);}
+ box(comp,.12,1,.12,3.5,.5,D/2+4.6,M(0x2b2b2b));box(comp,.5,.35,.3,3.5,1.1,D/2+4.6,M(0xE0342B));
+ layers.push(comp);
+ layers.forEach(l=>S.add(l));
+ const SEP=[0,2.2,4.8,7.6,-1.4];// exploded lift per layer: base, frame, lock-up, fixing, completion
+ let ex=0,exT=0,stage=0;
+ const red=new THREE.Color(0xE0342B);
+ layers.forEach(l=>l.traverse(o=>{if(o.isMesh)o.userData.c=o.material.color.clone()}));
+ window.setStage3d=i=>{stage=i;layers.forEach((l,j)=>{const idx=j+1;l.visible=i===0||idx<=i;l.traverse(o=>{if(!o.isMesh)return;if(!o.userData.own){o.material=o.material.clone();o.userData.own=1}const now=idx===i;o.material.color.copy(now?o.userData.c.clone().lerp(red,i===5?.2:.45):o.userData.c);o.material.opacity=i===0?.14:1;o.material.depthWrite=i!==0;})})};
+ setStage3d(cur);
+ const exEl=document.getElementById('ex'),exBtn=document.getElementById('explode'),spin=document.getElementById('spin');
+ exEl.addEventListener('input',()=>{exT=exEl.value/100;exBtn.classList.toggle('on',exT>.5);exBtn.setAttribute('aria-pressed',exT>.5);exBtn.textContent=exT>.5?'Put it together':'Take it apart'});
+ exBtn.addEventListener('click',()=>{exT=exT>.5?0:1;exEl.value=exT*100;exBtn.classList.toggle('on',exT>.5);exBtn.setAttribute('aria-pressed',exT>.5);exBtn.textContent=exT>.5?'Put it together':'Take it apart'});
+ spin.addEventListener('click',()=>{ctl.autoRotate=!ctl.autoRotate;spin.setAttribute('aria-pressed',ctl.autoRotate);spin.textContent=ctl.autoRotate?'Pause turning':'Turn it'});
+ const host=document.getElementById('stage3d');
+ function size(){const w=host.clientWidth,h=host.clientHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+ new ResizeObserver(size).observe(host);size();
+ (function loop(){ex+=(exT-ex)*.08;layers.forEach((l,j)=>{l.position.y=SEP[j]*ex});ctl.target.y=2.6+3.2*ex;ctl.update();R.render(S,cam);requestAnimationFrame(loop)})();
+})();
+</script>
+
+</body>
+</html>
