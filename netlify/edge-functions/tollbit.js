@@ -16,13 +16,25 @@
 // Never put the key in this file or anywhere in the repo.
 // Docs: https://docs.tollbit.com/docs/other  and  /docs/verifying-a-property
 
-// Bot list from TollBit's general integration guide (Oct 2026).
+// Recommended AI user agents from TollBit's General Route guide (updated 19 Oct 2026).
 // Keep it in step with Bot Management in the TollBit dashboard.
 const BOTS = [
-  "chatgpt-user", "perplexitybot", "gptbot", "anthropic-ai", "ccbot",
-  "claude-web", "claudebot", "claude-user", "claude-searchbot", "cohere-ai",
-  "youbot", "diffbot", "oai-searchbot", "meta-externalagent", "timpibot",
-  "amazonbot", "bytespider", "perplexity-user", "shapbot", "shap-user",
+  "agentnativesearchbot", "ai2bot", "aionbot", "aiwebindex", "amazonbot",
+  "amzn-searchbot", "amzn-user", "anthropic-ai",
+  "atevesearchsourceurldiscovery", "azureai-searchbot", "bravebot",
+  "bytespider", "ccbot", "chatgpt-user", "claude-code", "claude-searchbot",
+  "claude-user", "claude-web", "claude/", "claudebot",
+  "cloudflarebrowserrenderingcrawler", "cohere-ai", "comet/", "cursor/",
+  "desearchbot", "devin/", "diffbot", "duckassistbot", "exabot",
+  "exasearchbot", "exauser", "fellou", "gensparkbot", "githubcopilotruntime",
+  "goose/", "gptbot", "grok-agent", "grokbot", "hermes-agent", "iaskspider",
+  "ibou-search", "iboubot", "isonsearchbot", "keenable", "kimi-searchbot",
+  "kimibot", "lightpanda", "linkupbot", "manus-user", "meta-externalagent",
+  "meta-externalfetcher", "meta-webindexer", "mistralai-user", "mojeekbot",
+  "mysearchbot", "oai-adsbot", "oai-searchbot", "openclaw",
+  "perplexity-user", "perplexity/", "perplexitybot", "rednote-websearch-bot",
+  "reflectionbot", "shap-user", "shapbot", "sofyabot", "talarionsearchbot",
+  "timpibot", "youbot",
 ];
 
 // Files every crawler should still be able to read on the main site.
@@ -47,7 +59,8 @@ function sendLog(context, key, req, url, status, ua) {
     request_referer: req.headers.get("referer") || "",
     response_status: status,
     ip_address: context.ip || "",
-    country: (context.geo && context.geo.country && context.geo.country.code) || "",
+    geo_country: (context.geo && context.geo.country && context.geo.country.code) || "",
+    geo_city: (context.geo && context.geo.city) || "",
   });
   const p = fetch("https://log.tollbit.com/log", {
     method: "POST",
